@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Test routes
+Route::get('test', 'TestController@testGET');
+Route::post('test', 'TestController@testPOST');
+Route::put('test', 'TestController@testPUT');
+Route::delete('test', 'TestController@testDELETE');
