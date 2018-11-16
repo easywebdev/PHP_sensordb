@@ -14,13 +14,16 @@ class TestController extends Controller
     ];
 
     /**
+     * @param Request $request
      * @return array
      */
-    public function testGET()
+    public function testGET(Request $request)
     {
         //echo 'Test Responce';
 
         $jsonData = json_encode($this->arrData); // Not needs, becose Laravel convert array to JSON automaticly
+
+        $this->arrData['a'] = $request->a . $this->arrData['a'];
 
         return $this->arrData;
     }
@@ -75,7 +78,7 @@ class TestController extends Controller
 
         $answerData = [
             'Method' => $request->method(),
-            'itemID' => $itemID,
+            'Answer' => $itemID,
         ];
 
         return $answerData;

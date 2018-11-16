@@ -59,12 +59,13 @@
         function getData() {
             $.ajax({
                 type: 'GET',                                                                    // Method
+				data: {"a": "get data"},
                 url: 'http://sensordb.loc/api/test',                                            // URL
                 //contentType: 'json',
                 //processData: false,
-                success: function(data) {                                                       // Processing function
-                    alert(JSON.stringify(data));
-                    $('#get').html('a=' + data.a + '<br/>b=' + data.b + '<br/>c=' + data.c);
+                success: function(answer) {                                                       // Processing function
+                    alert(JSON.stringify(answer));
+                    $('#get').html('a=' + answer.a + '<br/>b=' + answer.b + '<br/>c=' + answer.c);
                 }
             });
         }
@@ -132,7 +133,7 @@
                 data: {"id": 18},
                 success: function(answer) {
                     alert(JSON.stringify(answer));
-                    $('#get').html('Deleted Item=' + answer.itemID);
+                    $('#get').html('Deleted Item=' + answer.Answer);
                 }
             });
         }
