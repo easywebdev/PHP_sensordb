@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: fedor
- * Date: 20.11.2018
- * Time: 11:38
+ * Date: 21.11.2018
+ * Time: 13:26
  */
 
 namespace App;
@@ -11,7 +11,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Role extends Model
 {
     /**
      * @var bool
@@ -23,15 +23,12 @@ class User extends Model
      */
     protected $fillable = [
         'name',
-        'password',
-        'token',
-        'roles_id',
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function role() {
-        return $this->belongsTo('App\Role', 'roles_id');
+    public function users() {
+        return $this->hasMany('App\User', 'roles_id');
     }
 }

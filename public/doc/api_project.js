@@ -1,15 +1,15 @@
 define({
-  "name": "example",
-  "version": "0.1.0",
-  "description": "apiDoc basic example",
-  "title": "Custom apiDoc browser title",
-  "url": "https://api.github.com/v1",
+  "name": "Sensor Database (MSL)",
+  "version": "1.0.0",
+  "description": "Rest API backend server for sensor data base MSL.<br />All data must be send in JSON format.<br />All response from server is on JSON format",
+  "title": "Sensor DB API",
+  "url": "",
   "sampleUrl": false,
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2018-11-16T13:14:33.627Z",
+    "time": "2018-12-14T10:32:09.277Z",
     "url": "http://apidocjs.com",
     "version": "0.17.7"
   }
