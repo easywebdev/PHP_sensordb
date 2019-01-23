@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "28a907d5-8f14-4234-b5e6-bd16475a4e34",
+		"name": "sensordb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Autorization",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"root\",\n\t\"password\":\"sensordbadmin\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/login",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getrole",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"disabled": false
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\": \"a73f5b3d52393ca381ba6237d00a06b9\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getrole",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getrole"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/resetpassword",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\":\"fa87f7f90e58ee02504d60e3e431e039\",\n\t\"oldpassword\":\"12345\",\n\t\"password1\":\"sensordbadmin\",\n\t\"password2\":\"sensordbadmin\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/resetpassword",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"resetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/rootreset",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"root\":\"123\",\n\t\"password\":\"1234\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/rootreset",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"rootreset"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/getusers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getusers",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getusers/3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getusers/3",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getusers",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/addusers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"user3\",\n\t\"password\":\"123456\",\n\t\"role\":\"user\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/addusers",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"addusers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/editusers/6",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"user2\",\n\t\"password\":\"123456\",\n\t\"role\":\"user\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/editusers/7",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"editusers",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/delusers/6",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/delusers/6",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"delusers",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

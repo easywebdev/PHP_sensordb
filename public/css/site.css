@@ -1,0 +1,144 @@
+/*=== Structural ===*/
+.s-authorization-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.s-header {
+    margin-bottom: 20px;
+    background-color: #64d5ca;
+}
+
+.s-main {
+    margin-bottom: 20px;
+    background-color: #64d5ca;
+}
+
+.s-footer {
+    margin-bottom: 20px;
+    background-color: #64d5ca;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: grey;
+}
+
+/**/
+
+/*=== Common ===*/
+.h1 {
+
+}
+.h2 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    background-color: green;
+}
+
+.table, .table td {
+    border: solid 1px black;
+    padding: 5px 10px 5px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.buttons-container {
+    margin-bottom: 10px;
+    background-color: green;
+}
+/**/
+
+/*=== Authorization ===*/
+.authorization {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: grey;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .auth-form__item {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .auth-form__label {
+        display: inline-block;
+        width: 80px;
+    }
+
+    .auth-form__item input {
+        border: solid 0px black;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+/**/
+
+/*=== Header ===*/
+.header-top {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+    .header-top__item {
+        margin-right: 10px;
+        background-color: green;
+    }
+        .header-top__item:last-child {
+            margin-right: 0px;
+        }
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.header-text {
+    width: 100%;
+}
+
+.header-manage {
+    width: 200px;
+}
+/**/
+
+/* === Navigation ===*/
+.nav {
+    display: flex;
+    height: 50px;
+    justify-content: left;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.nav__item {
+    display: block;
+    margin-right: 20px;
+    background-color: white;
+}
+
+    .nav__item:last-child {
+        margin-right: 0px;
+    }
+/**/
+
+/*=== Dialogs ===*/
+.test-dialog {
+    background-color: green;
+    width: 300px;
+    height: 300px;
+}
+/**/

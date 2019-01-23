@@ -1,6 +1,93 @@
 define({ "api": [
   {
     "type": "get",
+    "url": "/getusername",
+    "title": "Get user name",
+    "name": "Get_Name",
+    "group": "Authorization",
+    "permission": [
+      {
+        "name": "anybody"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": "<p>User token</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"token\": \"54a8e47d2b6e18ea80f31e1b29dc51c9\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server Error</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>User name</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"name\": \"user-1\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Wrong token</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "name",
+            "description": "<p>null</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n    \"err\": [\n        \"The selected token is invalid.\"\n    ],\n    \"name\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Authorization"
+  },
+  {
+    "type": "get",
     "url": "/getrole",
     "title": "Get user role",
     "name": "Get_Role",

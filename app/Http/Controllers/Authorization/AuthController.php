@@ -89,6 +89,35 @@ class AuthController extends Controller
      * @param Request $request
      * @return array
      */
+    public function getUserName(Request $request)
+    {
+        $err = null;
+        $name = null;
+
+        // Validate
+        $validateRules = [
+            'token' => 'required|exists:users,token'
+        ];
+
+        $validator = $this->validateData($request->input(), $validateRules);
+
+        if(!$validator) {
+            $name = User::where('token', $request->input('token'))->value('name');
+        }
+        else {
+            $err = $validator;
+        }
+
+        return [
+            'err'  => $err,
+            'name' => $name,
+        ];
+    }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function resetCurrentPassword(Request $request)
     {
         $err = null;

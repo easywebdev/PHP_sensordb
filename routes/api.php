@@ -94,6 +94,38 @@ Route::post('login', 'Authorization\AuthController@logIN');
 Route::get('getrole', 'Authorization\AuthController@getRole');
 
 /**
+ * @api {get} /getusername Get user name
+ * @apiName Get Name
+ * @apiGroup Authorization
+ * @apiPermission anybody
+ *
+ * @apiParam {String} token User token
+ * @apiParamExample {json} Request-Example:
+ *  {
+ *      "token": "54a8e47d2b6e18ea80f31e1b29dc51c9"
+ *  }
+ *
+ * @apiSuccess {String} err Server Error
+ * @apiSuccess {String} name User name
+ * @apiSuccessExample Success-Response:
+ *  {
+ *      "err": null,
+ *      "name": "user-1"
+ *  }
+ *
+ * @apiError err Wrong token
+ * @apiError name null
+ * @apiErrorExample {json} Error-Response:
+ *  {
+ *      "err": [
+ *          "The selected token is invalid."
+ *      ],
+ *      "name": null
+ *  }
+ */
+Route::get('getusername', 'Authorization\AuthController@getUserName');
+
+/**
  * @api {post} /resetpassword Reset User password
  * @apiName Reset password
  * @apiGroup Authorization

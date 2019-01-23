@@ -12,9 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Home/home');
 });
 
+Route::get('authorization', function () {
+    return view('Authorization/index');
+});
+
+Route::get('materials', function () {
+    return view('Materials/materials');
+});
+
+Route::get('manufactures', function () {
+    return view('Manufactures/manufactures');
+});
+
+Route::get('users', function () {
+    return view('Users/users');
+});
+
+// Test Routes
 Route::get('test', function () {
     return view('test/test');
 });
