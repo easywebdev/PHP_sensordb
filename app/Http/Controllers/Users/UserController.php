@@ -16,7 +16,7 @@ class UserController extends Controller
     use Roles;
 
     /**
-     * @return null
+     * @return array
      */
     public function getUsers()
     {

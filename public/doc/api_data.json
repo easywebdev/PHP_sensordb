@@ -390,6 +390,484 @@
   },
   {
     "type": "post",
+    "url": "/addmanufacturers",
+    "title": "Add Manufacturer",
+    "name": "Add_Manufacturer",
+    "group": "Manufacturers",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Manufacturer Name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "person",
+            "description": "<p>Manufacturer contact person.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n    \"name\":\"MEFE\",\n    \"person\":\"Person-2\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Manufacturer was added.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"err\": null,\n   \"manufacturer\": \"Manufacturer was add\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server Error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Manufacturer was not add.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n        \"The name field is required.\"\n     ],\n    \"answer\": \"Manufacturer not Add\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Manufacturers"
+  },
+  {
+    "type": "delete",
+    "url": "/delmanufacturers/:id",
+    "title": "Delete Manufacturer",
+    "name": "Delete_Manufacturer",
+    "group": "Manufacturers",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Manufacturer unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\":\"8d680875a1f3b18ba7d537abb947af02\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Manufacturer was deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"err\": null,\n   \"manufacturer\": \"Manufacturer was deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server Error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Manufacturer was not deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n        \"Manufacturer not found\"\n     ],\n    \"answer\": \"Manufacturer was not deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Manufacturers"
+  },
+  {
+    "type": "put",
+    "url": "/editmanufacturers/:id",
+    "title": "Edit Manufacturer",
+    "name": "Edit_Manufacturer",
+    "group": "Manufacturers",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Manufacturer unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Manufacturer Name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "person",
+            "description": "<p>Manufacturer contact person.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n    \"name\":\"MEFE\",\n    \"person\":\"Person-2\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Manufacturer was changed.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"err\": null,\n   \"manufacturer\": \"Manufacturer was changed\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server Error.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Manufacturer was not changed.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n        \"The selected id is invalid.\"\n     ],\n    \"answer\": \"Manufacturer not changed\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Manufacturers"
+  },
+  {
+    "type": "get",
+    "url": "/getmanufacturers/:id",
+    "title": "Get Manufacturer",
+    "name": "Get_Manufacturer",
+    "group": "Manufacturers",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Manufacturer unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "manufacturer",
+            "description": "<p>Manufacturer data in JSON.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   \"err\": null,\n   \"manufacturer\": {\n       \"id\": 1,\n       \"name\": \"MEFE\",\n       \"person\": \"Person-1\"\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server Error</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "manufacturer",
+            "description": "<p>null</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n        \"The selected id is invalid.\"\n     ],\n    \"manufacturer\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Manufacturers"
+  },
+  {
+    "type": "get",
+    "url": "/getmanufacturers",
+    "title": "Get Manufacturers",
+    "name": "Get_Manufacturers",
+    "group": "Manufacturers",
+    "permission": [
+      {
+        "name": "All Authorised"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "manufacturers",
+            "description": "<p>All manufacturers in JSON.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"manufacturers\": [\n        {\n            \"id\": 1,\n            \"name\": \"MEFE\",\n            \"person\": \"Person-1\"\n        },\n        {\n             \"id\": 2,\n             \"name\": \"Ahen\",\n             \"person\": \"Person-2\"\n         }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>No Permission</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": " {\n      \"err\": [\n          \"No Permission\"\n      ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Manufacturers"
+  },
+  {
+    "type": "post",
     "url": "/addusers",
     "title": "Add new User",
     "name": "Add_User",

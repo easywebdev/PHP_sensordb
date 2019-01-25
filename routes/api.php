@@ -351,6 +351,195 @@ Route::middleware(['root'])->group(function () {
 });
 /**/
 
+/* Manufacturers */
+/**
+ * @api {get} /getmanufacturers Get Manufacturers
+ * @apiName Get Manufacturers
+ * @apiGroup Manufacturers
+ * @apiPermission All Authorised
+ *
+ * @apiParam {String} userToken Current user token.
+ * @apiParamExample {json} Request-Example:
+ *  {
+ *      "userToken" : "af4c236904b2069d556e33e73f2aa033"
+ *  }
+ *
+ * @apiSuccess {String} err null.
+ * @apiSuccess {Object} manufacturers All manufacturers in JSON.
+ * @apiSuccessExample Success-Response:
+ *  {
+ *      "err": null,
+ *      "manufacturers": [
+ *          {
+ *              "id": 1,
+ *              "name": "MEFE",
+ *              "person": "Person-1"
+ *          },
+ *          {
+*               "id": 2,
+*               "name": "Ahen",
+*               "person": "Person-2"
+*           }
+ *      ]
+ *  }
+ *
+ * @apiError err No Permission
+ * @apiErrorExample {json} Error-Response:
+ *  {
+*       "err": [
+*           "No Permission"
+*       ]
+}
+ */
+Route::get('getmanufacturers', 'Manufacturers\ManufacturersController@getManufacturers')->middleware('allauth');
+
+Route::middleware(['rootadmin'])->group(function () {
+
+    /**
+     * @api {get} /getmanufacturers/:id Get Manufacturer
+     * @apiName Get Manufacturer
+     * @apiGroup Manufacturers
+     * @apiPermission root, admin
+     *
+     * @apiParam {Number} id Manufacturer unique ID.
+     * @apiParam {String} userToken Current user token.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken" : "af4c236904b2069d556e33e73f2aa033"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {Object} manufacturer Manufacturer data in JSON.
+     * @apiSuccessExample Success-Response:
+     *   {
+     *      "err": null,
+     *      "manufacturer": {
+     *          "id": 1,
+     *          "name": "MEFE",
+     *          "person": "Person-1"
+     *      }
+     *   }
+     *
+     * @apiError err Server Error
+     * @apiError manufacturer null
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *          "The selected id is invalid."
+     *       ],
+     *      "manufacturer": null
+     *  }
+     */
+    Route::get('getmanufacturers/{id}', 'Manufacturers\ManufacturersController@getManufacturer');
+
+    /**
+     * @api {put} /editmanufacturers/:id Edit Manufacturer
+     * @apiName Edit Manufacturer
+     * @apiGroup Manufacturers
+     * @apiPermission root, admin
+     *
+     * @apiParam {Number} id Manufacturer unique ID.
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} name Manufacturer Name.
+     * @apiParam {String} person Manufacturer contact person.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken":"8d680875a1f3b18ba7d537abb947af02",
+     *      "name":"MEFE",
+     *      "person":"Person-2"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Manufacturer was changed.
+     * @apiSuccessExample Success-Response:
+     *   {
+     *      "err": null,
+     *      "manufacturer": "Manufacturer was changed"
+     *   }
+     *
+     * @apiError err Server Error.
+     * @apiError answer Manufacturer was not changed.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *          "The selected id is invalid."
+     *       ],
+     *      "answer": "Manufacturer not changed"
+     *  }
+     */
+    Route::put('editmanufacturers/{id}', 'Manufacturers\ManufacturersController@editManufacturer');
+
+    /**
+     * @api {post} /addmanufacturers Add Manufacturer
+     * @apiName Add Manufacturer
+     * @apiGroup Manufacturers
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} name Manufacturer Name.
+     * @apiParam {String} person Manufacturer contact person.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken":"8d680875a1f3b18ba7d537abb947af02",
+     *      "name":"MEFE",
+     *      "person":"Person-2"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Manufacturer was added.
+     * @apiSuccessExample Success-Response:
+     *   {
+     *      "err": null,
+     *      "manufacturer": "Manufacturer was add"
+     *   }
+     *
+     * @apiError err Server Error.
+     * @apiError answer Manufacturer was not add.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *          "The name field is required."
+     *       ],
+     *      "answer": "Manufacturer not Add"
+     *  }
+     */
+    Route::post('addmanufacturers', 'Manufacturers\ManufacturersController@addManufacturer');
+
+    /**
+     * @api {delete} /delmanufacturers/:id Delete Manufacturer
+     * @apiName Delete Manufacturer
+     * @apiGroup Manufacturers
+     * @apiPermission root, admin
+     *
+     * @apiParam {Number} id Manufacturer unique ID.
+     * @apiParam {String} userToken Current user token.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken":"8d680875a1f3b18ba7d537abb947af02"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Manufacturer was deleted.
+     * @apiSuccessExample Success-Response:
+     *   {
+     *      "err": null,
+     *      "manufacturer": "Manufacturer was deleted"
+     *   }
+     *
+     * @apiError err Server Error.
+     * @apiError answer Manufacturer was not deleted.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *          "Manufacturer not found"
+     *       ],
+     *      "answer": "Manufacturer was not deleted"
+     *  }
+     */
+    Route::delete('delmanufacturers/{id}', 'Manufacturers\ManufacturersController@delManufacturer');
+});
+/**/
+
 /* Additional Routs */
 // No Permission Page
 Route::get('NoPermission', function () { return ['err' => ['No Permission']]; });
