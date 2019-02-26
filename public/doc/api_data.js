@@ -38,7 +38,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error</p>"
+            "description": "<p>null</p>"
           },
           {
             "group": "Success 200",
@@ -64,7 +64,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Wrong token</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -125,7 +125,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error</p>"
+            "description": "<p>null</p>"
           },
           {
             "group": "Success 200",
@@ -151,7 +151,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Wrong token</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -219,7 +219,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error</p>"
+            "description": "<p>null</p>"
           },
           {
             "group": "Success 200",
@@ -252,7 +252,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Wrong authorization data</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -340,7 +340,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error</p>"
+            "description": "<p>null</p>"
           },
           {
             "group": "Success 200",
@@ -366,7 +366,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Wrong reset password data</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -467,7 +467,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>Server errors array.</p>"
           },
           {
             "group": "Error 4xx",
@@ -561,7 +561,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>Server errors array.</p>"
           },
           {
             "group": "Error 4xx",
@@ -669,7 +669,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>Server errors array.</p>"
           },
           {
             "group": "Error 4xx",
@@ -763,7 +763,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -850,14 +850,14 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>No Permission</p>"
+            "description": "<p>Server errors array</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Error-Response:",
-          "content": " {\n      \"err\": [\n          \"No Permission\"\n      ]\n}",
+          "content": "{\n     \"err\": [\n         \"No Permission\"\n     ]\n }",
           "type": "json"
         }
       ]
@@ -865,6 +865,586 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "./routes/api.php",
     "groupTitle": "Manufacturers"
+  },
+  {
+    "type": "post",
+    "url": "/addseries",
+    "title": "Add Serie",
+    "name": "Add_Serie",
+    "group": "Series",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Serie name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "structure",
+            "description": "<p>Serie layers structure.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "thickness",
+            "description": "<p>Sensitive layer thickness.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Immage path.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "current",
+            "description": "<p>Typical current for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "resistance",
+            "description": "<p>Typical resistance for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "sencitivity",
+            "description": "<p>Typical sencitivity for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Typical offset for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Enum",
+            "optional": false,
+            "field": "material_type",
+            "description": "<p>Type of sensitive layer may be &quot;2D&quot; or &quot;3D&quot;.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Enum",
+            "optional": false,
+            "field": "vunits",
+            "description": "<p>Voltage units for this serie. May be &quot;V&quot;, &quot;mV&quot;, &quot;mkV&quot;, &quot;nV&quot;</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "manufacturers_id",
+            "description": "<p>Manufacturer id for this serie.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Serie was added.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Serie was added\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The name has already been taken.\",\n         \"The selected vunits is invalid.\"\n     ],\n     \"answer\": \"Serie was not added\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Series"
+  },
+  {
+    "type": "post",
+    "url": "/delseries/{id}",
+    "title": "Delete Serie",
+    "name": "Del_Serie",
+    "group": "Series",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Series unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Serie was deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Serie was deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"Wrong ID\"\n     ],\n     \"answer\": \"Serie was not deleted\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Series"
+  },
+  {
+    "type": "put",
+    "url": "/editseries/{id}",
+    "title": "Edit Serie",
+    "name": "Edit_Serie",
+    "group": "Series",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Series unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Serie name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "structure",
+            "description": "<p>Serie layers structure.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "thickness",
+            "description": "<p>Sensitive layer thickness.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Immage path.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "current",
+            "description": "<p>Typical current for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "resistance",
+            "description": "<p>Typical resistance for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "sencitivity",
+            "description": "<p>Typical sencitivity for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Double",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Typical offset for samples in this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Enum",
+            "optional": false,
+            "field": "material_type",
+            "description": "<p>Type of sensitive layer may be &quot;2D&quot; or &quot;3D&quot;.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Enum",
+            "optional": false,
+            "field": "vunits",
+            "description": "<p>Voltage units for this serie. May be &quot;V&quot;, &quot;mV&quot;, &quot;mkV&quot;, &quot;nV&quot;</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "manufacturers_id",
+            "description": "<p>Manufacturer id for this serie.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Series was changed.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Serie was changed\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The selected material type is invalid.\",\n         \"The selected vunits is invalid.\"\n     ],\n     \"answer\": \"Serie was not changed\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Series"
+  },
+  {
+    "type": "get",
+    "url": "/getseries/{id}",
+    "title": "Get Serie",
+    "name": "Get_Serie",
+    "group": "Series",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Series unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "serie",
+            "description": "<p>Series data in JSON.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"serie\":\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1\n         }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The selected id is invalid.\"\n     ],\n     \"serie\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Series"
+  },
+  {
+    "type": "get",
+    "url": "/getseries",
+    "title": "Get Series",
+    "name": "Get_Series",
+    "group": "Series",
+    "permission": [
+      {
+        "name": "All Authorised"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "series",
+            "description": "<p>All series in JSON.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"series\": [\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1\n         },\n         {\n             \"id\": 2,\n             \"name\": \"series-2\",\n             \"structure\": \"layer-2/substrate\",\n             \"thickness\": 100,\n             \"image\": \"image-2\",\n             \"current\": 50,\n             \"resistance\": 3,\n             \"sensitivity\": 0.001,\n             \"offset\": 300,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 2\n         }\n     ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"No Permission\"\n     ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Series"
   },
   {
     "type": "post",
@@ -926,7 +1506,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>null.</p>"
           },
           {
             "group": "Success 200",
@@ -952,7 +1532,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>User is already exist</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -1020,7 +1600,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>null.</p>"
           },
           {
             "group": "Success 200",
@@ -1046,7 +1626,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>No User find</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -1135,7 +1715,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>null.</p>"
           },
           {
             "group": "Success 200",
@@ -1161,7 +1741,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>User is already exist</p>"
+            "description": "<p>Server errors array</p>"
           },
           {
             "group": "Error 4xx",
@@ -1229,7 +1809,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "err",
-            "description": "<p>Server Error.</p>"
+            "description": "<p>null.</p>"
           },
           {
             "group": "Success 200",
@@ -1255,7 +1835,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>No User find</p>"
+            "description": "<p>Server error array</p>"
           },
           {
             "group": "Error 4xx",
@@ -1342,7 +1922,7 @@ define({ "api": [
             "group": "Error 4xx",
             "optional": false,
             "field": "err",
-            "description": "<p>No Permission for this request</p>"
+            "description": "<p>Server errors array</p>"
           }
         ]
       },

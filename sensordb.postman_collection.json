@@ -21,7 +21,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":\"root\",\n\t\"password\":\"sensordbadmin\"\n}"
+							"raw": "{\n\t\"name\":\"user1\",\n\t\"password\":\"123456\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/login",
@@ -54,7 +54,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"token\": \"a73f5b3d52393ca381ba6237d00a06b9\"\n}"
+							"raw": "{\n\t\"token\": \"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/getrole",
@@ -84,7 +84,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"token\":\"fa87f7f90e58ee02504d60e3e431e039\",\n\t\"oldpassword\":\"12345\",\n\t\"password1\":\"sensordbadmin\",\n\t\"password2\":\"sensordbadmin\"\n}"
+							"raw": "{\n\t\"token\":\"54b41981bebd0b6c2a8553ee5c1e2f9b\",\n\t\"oldpassword\":\"123456\",\n\t\"password1\":\"123456\",\n\t\"password2\":\"123456\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/resetpassword",
@@ -117,7 +117,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"root\":\"123\",\n\t\"password\":\"1234\"\n}"
+							"raw": "{\n\t\"kod\":\"Kid1367548%\",\n\t\"password\":\"sensordbadmin\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/rootreset",
@@ -129,6 +129,39 @@
 							"path": [
 								"api",
 								"rootreset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getusername",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getusername",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getusername"
 							]
 						}
 					},
@@ -219,7 +252,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"user3\",\n\t\"password\":\"123456\",\n\t\"role\":\"user\"\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"user4\",\n\t\"password\":\"123456\",\n\t\"role\":\"user\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/addusers",
@@ -249,10 +282,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"user2\",\n\t\"password\":\"123456\",\n\t\"role\":\"user\"\n}"
+							"raw": "{\"userToken\": \"3fb024e46e221b100b3b948be1c5eb79\",\r\n    \"name\": \"user3\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\"\r\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/editusers/7",
+							"raw": "http://sensordb.loc/api/editusers/8",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -261,7 +294,7 @@
 							"path": [
 								"api",
 								"editusers",
-								"7"
+								"8"
 							]
 						}
 					},
@@ -283,7 +316,7 @@
 							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/delusers/6",
+							"raw": "http://sensordb.loc/api/delusers/48",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -292,7 +325,335 @@
 							"path": [
 								"api",
 								"delusers",
-								"6"
+								"48"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manufacturers",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/getmanufacturers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"fd7f0f5b6afa610ad3e334acad32b0e4\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getmanufacturers",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getmanufacturers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getmanufacturers/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getmanufacturers/10",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getmanufacturers",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/editmanufacturers/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\":\"MEFE\",\n\t\"person\":\"BBB\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/editmanufacturers/10",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"editmanufacturers",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/addmanufacturers",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\":\"MEFE-3\",\n\t\"person\":\"CCC\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/addmanufacturers",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"addmanufacturers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/delmanufacturers/5",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/delmanufacturers/10",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"delmanufacturers",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "series",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/getseries",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getseries",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getseries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getseries/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getseries/1",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getseries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/editseries/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/editseries/1",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"editseries",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/addseries",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\": \"series-3\",\n    \"structure\": \"layer-3/substrate\",\n    \"thickness\": 1000,\n    \"image\": \"image-3\",\n    \"current\": 10,\n    \"resistance\": 50,\n    \"sensitivity\": 35,\n    \"offset\": 1,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mV\",\n    \"manufacturers_id\": 3\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/addseries",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"addseries"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/delseries/3",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/delseries/3",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"delseries",
+								"3"
 							]
 						}
 					},

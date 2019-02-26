@@ -19,7 +19,7 @@ trait MyValidator
 
         if($validator->fails()) {
             foreach (json_decode($validator->messages()) as $msg) {
-                $err = $msg;
+                $err[] = $msg[0];
             }
         }
 

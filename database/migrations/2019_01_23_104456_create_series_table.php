@@ -17,12 +17,14 @@ class CreateSeriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('structure');
-            $table->decimal('thickness');
+            $table->double('thickness');
             $table->string('image');
-            $table->decimal('current');
-            $table->decimal('resistance');
-            $table->decimal('sensitivity');
-            $table->decimal('offset');
+            $table->double('current');
+            $table->double('resistance');
+            $table->double('sensitivity');
+            $table->double('offset');
+            $table->enum('material_type', ['3D', '2D']);
+            $table->enum('vunits', ['V', 'mV', 'mkV', 'nV']);
             $table->integer('manufacturers_id')->unsigned();
 
             $table->foreign('manufacturers_id')->references('id')->on('manufacturers')
