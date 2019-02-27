@@ -790,6 +790,188 @@ Route::middleware(['rootadmin'])->group(function () {
 });
 /**/
 
+/* Materials */
+/**
+ * @api {get} /getmaterials Get Materials
+ * @apiName Get Materials
+ * @apiGroup Materials
+ * @apiPermission All Authorised
+ *
+ * @apiParam {String} userToken Current user token.
+ * @apiParamExample {json} Request-Example:
+ *  {
+ *      "userToken" : "af4c236904b2069d556e33e73f2aa033"
+ *  }
+ *
+ * @apiSuccess {String} err null.
+ * @apiSuccess {Object} series All materials in JSON.
+ * @apiSuccessExample Success-Response:
+ *  {
+ *      "err": null,
+ *      "materials": [
+ *           {
+ *               "id": 1,
+ *               "name": "InSb"
+ *           },
+ *           {
+ *               "id": 2,
+ *               "name": "InAs"
+ *           }
+ *       ]
+ *  }
+ *
+ * @apiError {Array} err Server errors array
+ * @apiErrorExample {json} Error-Response:
+ *  {
+ *       "err": [
+ *           "No Permission"
+ *       ]
+ *   }
+ */
+Route::get('getmaterials', 'Materials\MaterialsController@getMaterials')->middleware('allauth');
+
+Route::middleware(['rootadmin'])->group(function () {
+    /**
+     * @api {get} /getmaterials/{id} Get Material
+     * @apiName Get Material
+     * @apiGroup Materials
+     * @apiPermission root, admin
+     *
+     * @apiParam {Number} id Materials unique ID.
+     * @apiParam {String} userToken Current user token.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken" : "af4c236904b2069d556e33e73f2aa033"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {Object} Material parameters in JSON.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "material":
+     *           {
+     *               "id": 1,
+     *               "name": "InSb"
+     *           }
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} material null
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "The selected id is invalid."
+     *       ],
+     *       "material": null
+     *   }
+     */
+    Route::get('getmaterials/{id}', 'Materials\MaterialsController@getMaterial');
+
+    /**
+     * @api {put} /editmaterials/{id} Edit Material
+     * @apiName Edit Material
+     * @apiGroup Materials
+     * @apiPermission root, admin
+     *
+     * @apiParam {Number} id Materials unique ID.
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} name Unique material name.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken" : "af4c236904b2069d556e33e73f2aa033",
+     *      "name":"InSb"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Material was changed.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "Material was changed"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer Material was not changed.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "The name has already been taken."
+     *       ],
+     *       "answer": "Material was not changed"
+     *   }
+     */
+    Route::put('editmaterials/{id}', 'Materials\MaterialsController@editMaterial');
+
+    /**
+     * @api {post} /addmaterials Add Material
+     * @apiName Add Material
+     * @apiGroup Materials
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} name Unique material name.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken" : "af4c236904b2069d556e33e73f2aa033",
+     *      "name":"InSb"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Material was added.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "Material was added"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer Material was not added.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "The name has already been taken."
+     *       ],
+     *       "answer": "Material was not added"
+     *   }
+     */
+    Route::post('addmaterials', 'Materials\MaterialsController@addMaterial');
+
+    /**
+     * @api {delete} /delmaterials/{id} Delete Material
+     * @apiName Del Material
+     * @apiGroup Materials
+     * @apiPermission root, admin
+     *
+     * @apiParam {Number} id Unique materials id.
+     * @apiParam {String} userToken Current user token.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken" : "af4c236904b2069d556e33e73f2aa033"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Material was deleted.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "Material was deleted"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer Material was not deleted.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "Wrong ID"
+     *       ],
+     *       "answer": "Material was not deleted"
+     *   }
+     */
+    Route::delete('delmaterials/{id}', 'Materials\MaterialsController@delMaterial');
+});
+/**/
+
 /* Additional Routs */
 // No Permission Page
 Route::get('NoPermission', function () { return ['err' => ['No Permission']]; });

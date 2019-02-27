@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Series;
 
-
 use App\Http\Controllers\Controller;
 use App\Series;
 use App\Tasks\MyValidator;
@@ -66,7 +65,7 @@ class SeriesController extends Controller
         $postData = $request->input();
         $postData['id'] = $request->route('id');
         $validateRules = [
-            'name' => 'required',
+            'name' => 'required|unique:series,name,' . $request->route('id'),
             'material_type' => 'in:3D,2D',
             'vunits' => 'in:V,mV,mkV,nV',
             'manufacturers_id' => 'exists:manufacturers,id',
@@ -115,7 +114,6 @@ class SeriesController extends Controller
             'material_type' => 'in:3D,2D',
             'vunits' => 'in:V,mV,mkV,nV',
             'manufacturers_id' => 'exists:manufacturers,id',
-            'id' => 'exists:series,id',
         ];
         $validator = $this->validateData($request->input(), $validateRules);
 

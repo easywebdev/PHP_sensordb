@@ -868,6 +868,479 @@
   },
   {
     "type": "post",
+    "url": "/addmaterials",
+    "title": "Add Material",
+    "name": "Add_Material",
+    "group": "Materials",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique material name.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\":\"InSb\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was added.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Material was added\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was not added.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The name has already been taken.\"\n     ],\n     \"answer\": \"Material was not added\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Materials"
+  },
+  {
+    "type": "delete",
+    "url": "/delmaterials/{id}",
+    "title": "Delete Material",
+    "name": "Del_Material",
+    "group": "Materials",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Unique materials id.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Material was deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was not deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"Wrong ID\"\n     ],\n     \"answer\": \"Material was not deleted\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Materials"
+  },
+  {
+    "type": "put",
+    "url": "/editmaterials/{id}",
+    "title": "Edit Material",
+    "name": "Edit_Material",
+    "group": "Materials",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Materials unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Unique material name.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\":\"InSb\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was changed.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Material was changed\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was not changed.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The name has already been taken.\"\n     ],\n     \"answer\": \"Material was not changed\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Materials"
+  },
+  {
+    "type": "get",
+    "url": "/getmaterials/{id}",
+    "title": "Get Material",
+    "name": "Get_Material",
+    "group": "Materials",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Materials unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "Material",
+            "description": "<p>parameters in JSON.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"material\":\n         {\n             \"id\": 1,\n             \"name\": \"InSb\"\n         }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "material",
+            "description": "<p>null</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The selected id is invalid.\"\n     ],\n     \"material\": null\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Materials"
+  },
+  {
+    "type": "get",
+    "url": "/getmaterials",
+    "title": "Get Materials",
+    "name": "Get_Materials",
+    "group": "Materials",
+    "permission": [
+      {
+        "name": "All Authorised"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "series",
+            "description": "<p>All materials in JSON.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"materials\": [\n         {\n             \"id\": 1,\n             \"name\": \"InSb\"\n         },\n         {\n             \"id\": 2,\n             \"name\": \"InAs\"\n         }\n     ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"No Permission\"\n     ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Materials"
+  },
+  {
+    "type": "post",
     "url": "/addseries",
     "title": "Add Serie",
     "name": "Add_Serie",
