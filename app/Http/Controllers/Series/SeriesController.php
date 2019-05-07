@@ -68,6 +68,7 @@ class SeriesController extends Controller
             'name' => 'required|unique:series,name,' . $request->route('id'),
             'material_type' => 'in:3D,2D',
             'vunits' => 'in:V,mV,mkV,nV',
+            'iunits' => 'in:A,mA,mkA,nA',
             'manufacturers_id' => 'exists:manufacturers,id',
             'id' => 'exists:series,id',
         ];
@@ -84,6 +85,7 @@ class SeriesController extends Controller
             $serie->sensitivity = $postData['sensitivity'];
             $serie->offset = $postData['offset'];
             $serie->vunits = $postData['vunits'];
+            $serie->iunits = $postData['iunits'];
             $serie->material_type = $postData['material_type'];
             $serie->manufacturers_id = $postData['manufacturers_id'];
             $serie->save();
@@ -110,9 +112,10 @@ class SeriesController extends Controller
         $answer = 'Serie was not added';
 
         $validateRules = [
-            'name' => 'required||unique:series,name,',
+            'name' => 'required|unique:series,name,',
             'material_type' => 'in:3D,2D',
             'vunits' => 'in:V,mV,mkV,nV',
+            'iunits' => 'in:A,mA,mkA,nA',
             'manufacturers_id' => 'exists:manufacturers,id',
         ];
         $validator = $this->validateData($request->input(), $validateRules);

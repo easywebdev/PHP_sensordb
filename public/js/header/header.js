@@ -14,6 +14,7 @@ $(document).ready(function()
             data: {"token": TOKEN},
             success: function(answer) {
                 if(!answer.err) {
+                    setCookie('role', answer.role, null);
                     $('#userrole').html('Role: ' + answer.role);
                     buildNav(answer.role);
                 }
@@ -64,6 +65,7 @@ function buildNav(role)
 function logOut(token)
 {
     deleteCookie(token);
+    deleteCookie('role');
     TOKEN = null;
     window.location.href = '/authorization';
 }

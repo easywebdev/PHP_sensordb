@@ -394,7 +394,6 @@ Route::middleware(['root'])->group(function () {
 Route::get('getmanufacturers', 'Manufacturers\ManufacturersController@getManufacturers')->middleware('allauth');
 
 Route::middleware(['rootadmin'])->group(function () {
-
     /**
      * @api {get} /getmanufacturers/:id Get Manufacturer
      * @apiName Get Manufacturer
@@ -969,6 +968,18 @@ Route::middleware(['rootadmin'])->group(function () {
      *   }
      */
     Route::delete('delmaterials/{id}', 'Materials\MaterialsController@delMaterial');
+});
+/**/
+
+/* Samples */
+Route::get('getsamples', 'Samples\SamplesController@getSamples')->middleware('allauth');
+
+Route::middleware(['rootadmin'])->group(function () {
+    Route::post('addsamples', 'Samples\SamplesController@addSamples');
+
+    Route::put('editsamples', 'Samples\SamplesController@editSamples');
+
+    Route::delete('delsamples', 'Samples\SamplesController@delSamples');
 });
 /**/
 

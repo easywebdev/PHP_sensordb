@@ -224,7 +224,7 @@
 							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/getusers/3",
+							"raw": "http://sensordb.loc/api/getusers/1",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -233,7 +233,7 @@
 							"path": [
 								"api",
 								"getusers",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -282,10 +282,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"userToken\": \"3fb024e46e221b100b3b948be1c5eb79\",\r\n    \"name\": \"user3\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\"\r\n}"
+							"raw": "{\"userToken\": \"3fb024e46e221b100b3b948be1c5eb79\",\r\n    \"name\": \"user-2\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\"\r\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/editusers/8",
+							"raw": "http://sensordb.loc/api/editusers/4",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -294,7 +294,7 @@
 							"path": [
 								"api",
 								"editusers",
-								"8"
+								"4"
 							]
 						}
 					},
@@ -644,7 +644,7 @@
 							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/delseries/3",
+							"raw": "http://sensordb.loc/api/delseries/33",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -653,7 +653,239 @@
 							"path": [
 								"api",
 								"delseries",
-								"3"
+								"33"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materials",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/getmaterials",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getmaterials",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getmaterials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getmaterials/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getmaterials/11",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getmaterials",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/editmaterials/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"InSb\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/editmaterials/1",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"editmaterials",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/addmaterials",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"Graphen\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/addmaterials",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"addmaterials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/delmaterials/4",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/delmaterials/4",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"delmaterials",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Samples",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/addsamples",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"name\":\"name-1\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"materials_id\":1,\n\t\t\t\"manufacturers_id\":1,\n\t\t\t\"series_id\":1\n\t\t},\n\t\t{\n\t\t\t\"name\":\"name-2\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"materials_id\":2,\n\t\t\t\"manufacturers_id\":2,\n\t\t\t\"series_id\":2\n\t\t}\n\t]\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/addsamples",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"addsamples"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/getsamples",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"materials_id\":[1, 2],\n\t\"manufacturers_id\":[1, 2],\n\t\"series_id\":[1, 2],\n\t\"DateTime\":\"2019-03-05 11:00:00\",\n\t\"noties\":\"test\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/getsamplescount",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"getsamplescount"
 							]
 						}
 					},

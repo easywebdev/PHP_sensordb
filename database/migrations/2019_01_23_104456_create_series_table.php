@@ -25,6 +25,7 @@ class CreateSeriesTable extends Migration
             $table->double('offset');
             $table->enum('material_type', ['3D', '2D']);
             $table->enum('vunits', ['V', 'mV', 'mkV', 'nV']);
+            $table->enum('iunits', ['A', 'mA', 'mkA', 'nA']);
             $table->integer('manufacturers_id')->unsigned();
 
             $table->foreign('manufacturers_id')->references('id')->on('manufacturers')

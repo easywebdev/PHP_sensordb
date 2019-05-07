@@ -40,11 +40,20 @@
     background-color: green;
 }
 
+.table-container {
+    overflow-x: scroll;
+}
+
 .table, .table td {
     border: solid 1px black;
     padding: 5px 10px 5px 10px;
     text-align: center;
+    vertical-align: middle;
     margin-bottom: 10px;
+}
+
+.hidden-dt {
+    display: none;
 }
 
 .btn {
@@ -54,6 +63,14 @@
 .buttons-container {
     margin-bottom: 10px;
     background-color: green;
+}
+
+.line-block {
+    display:  flex;
+    align-content: center;
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 10px;
+    background-color: #1d68a7;
 }
 /**/
 
@@ -141,4 +158,49 @@
     width: 300px;
     height: 300px;
 }
+/**/
+
+/* === Samples ===*/
+.filters {
+
+}
+
+.manage-buttons {
+
+}
+
+.pagination {
+    display: flex;
+    margin-right: 20px;
+}
+
+.pagination__item {
+    display: block;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: black;
+    color: white;
+}
+    .pagination__item--active {
+        background-color: red;
+    }
+
+.items-count {
+    margin-right: 10px;
+}
+
+.page-info {
+    margin-right: 10px;
+}
+
+.units {
+    margin-right: 10px;
+}
+
+    .units__item {
+        margin-right: 5px;
+    }
+        .units__item:last-child {
+            margin-right: 0px;
+        }
 /**/

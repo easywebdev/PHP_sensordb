@@ -36,4 +36,9 @@ Route::get('test', function () {
     return view('test/test');
 });
 
+Route::get('date', function () {
+    $my_date = mktime (00, 00, 0, 00, 00, 0001);
+    echo date("Y-m-d H:i:s", $my_date);
+});
+
 

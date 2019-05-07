@@ -26,6 +26,7 @@ class Series extends Model
         'offset',
         'material_type',
         'vunits',
+        'iunits',
         'manufacturers_id',
     ];
 }
