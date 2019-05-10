@@ -25,6 +25,10 @@ $(document).ready(function()
 {
     //Build Page
     buildPage(currentPage);
+
+    // Dialogs
+    createConfirmDialog('#deldialog', 'auto', delData);
+    createDialogue('#adddialog', 'auto', addData);
 });
 
 // Change Current units
@@ -60,6 +64,15 @@ $('.reverce').change(function () {
     }
 
     buildPage('?page=' + currentPage);
+});
+
+$('.table').on('click', '#chbk', function () {
+    if($('#chbk').prop('checked')) {
+        $('.delchkb').prop('checked', true);
+    }
+    else {
+        $('.delchkb').prop('checked', false);
+    }
 });
 
 function buildPage(pageLink) {
@@ -185,7 +198,8 @@ function buildPage(pageLink) {
                     if(readCookie('role') == 'root' || readCookie('role') == 'admin') {
                         $('.manage-buttons').html(
                             '<a class="btn" href="javascript:saveData(\'edit\')">Save</a>' +
-                            '<a class="btn" href="">Add</a>'
+                            '<a class="btn" href="javascript:addSamplesForm()">Add</a>' +
+                            '<a class="btn" href="javascript:delSamplesForm()">Delete</a>'
                         );
                     }
 
@@ -194,17 +208,17 @@ function buildPage(pageLink) {
 
                     $('.table').html(
                         '<tr>' +
-                        '<td>Select</td>' +
+                        '<td>Select<div><input id="chbk" type="checkbox" /></div></td>' +
                         '<td>#</td>' +
                         '<td>Name</td>' +
                         '<td>Serie</td>' +
                         '<td>Material</td>' +
                         '<td>Manufacturer</td>' +
-                        '<td>I</td>'+
+                        '<td>I<div>[' + currentUnits + ']</div></td>'+
                         '<td><div>R</div><div>[&Omega;]</div></td>' +
                         '<td><div>R&#10065;</div><div>[&Omega;]</div></td>' +
-                        '<td><div>V<sub>0</sub></div><div>' + voltageUnits + '</div></td>' +
-                        '<td><div>V<sub>H</sub></div><div>' + voltageUnits + '</div></td>' +
+                        '<td><div>V<sub>0</sub></div><div>[' + voltageUnits + ']</div></td>' +
+                        '<td><div>V<sub>H</sub></div><div>[' + voltageUnits + ']</div></td>' +
                         '<td><div>S<sub>I</sub></div><div>[V/A/T]</div></td>' +
                         '<td><div>S<sub>V</sub></div><div>[V/V/T]</div></td>' +
                         '<td><div>n</div><div>[sm<sup>-3</sup>]</div></td>' +
@@ -219,11 +233,6 @@ function buildPage(pageLink) {
                         buildSamplesTable(i, value, seriesList, materialsList, manufacturersList);
                         i++;
                     });
-
-                    // Test selector must be removed at last
-                    $('#test').html(
-                        '<select id="stest"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select><a class="btn" href="javascript:changeSelectedAtr()">Test</a>'
-                    );
                 }
                 else {
                     alert(answer.err);
@@ -285,12 +294,12 @@ function buildSamplesTable(number, sampleData, seriesList, materialsList, manufa
     }
 
     $('.table').append('<tr>' +
-        '<td><input type="checkbox" /></td>' +
+        '<td><input id="' + sampleData.id + '" class="delchkb" type="checkbox" /></td>' +
         '<td>' + number + '</td>' +
         '<td>' + sampleData.name + '</td>' +
         '<td>' + buildSeries(seriesList, sampleData.series_id) + '</td>' +
-        '<td>' + buildMaterials(materialsList, sampleData.materials_id) + '</td>' +
-        '<td>' + buildManufacturers(manufacturersList, sampleData.manufacturers_id) + '</td>' +
+        '<td>' + sampleData.material_name + '</td>' +
+        '<td>' + sampleData.manufacturer_name + '</td>' +
         '<td' + editableTD + '>' + sampleData.current + '</td>' +
         '<td' + editableTD + '>' + sampleData.resistance + '</td>' +
         '<td' + editableTD + '>' + sampleData.sqr_resistance + '</td>' +
@@ -416,54 +425,6 @@ function buildSeries(seriesList, id)
     }
 
     return serieName;
-}
-
-function buildMaterials(materialsList, id)
-{
-    var materialName = '<select>';
-    var material;
-
-    // Get Serie Name by ID
-    for(let pair of materialsList) {
-        let selected = '';
-        if(id == pair[0]) {
-            selected = 'selected';
-            material = pair[1];
-        }
-        materialName += '<option value="' + pair[0] +'"' + selected +'>' + pair[1] + '</option>';
-    }
-
-    materialName += '</select>';
-
-    if(readCookie('role') == 'user') {
-        materialName = material;
-    }
-
-    return materialName;
-}
-
-function buildManufacturers(manufacturersList, id)
-{
-    var manufacturerName = '<select>';
-    var manufacturer;
-
-    // Get Serie Name by ID
-    for(let pair of manufacturersList) {
-        let selected = '';
-        if(id == pair[0]) {
-            selected = 'selected';
-            manufacturer = pair[1];
-        }
-        manufacturerName += '<option value="' + pair[0] +'"' + selected +'>' + pair[1] + '</option>';
-    }
-
-    manufacturerName += '</select>';
-
-    if(readCookie('role') == 'user') {
-        manufacturerName = manufacturer;
-    }
-
-    return manufacturerName;
 }
 
 function recalculateByUnits(data)
@@ -617,14 +578,14 @@ function saveData(tableID) {
             //alert(JSON.stringify(answer));
             if(!answer.err) {
                 alert(answer.answer);
+                buildPage('?page=' + currentPage);
             }
             else {
                 alert(answer.err);
             }
         }
     });
-
-    console.log(jsonStr);
+    //console.log(jsonStr);
 }
 
 function parceTableDataToJson(tableID)
@@ -653,9 +614,10 @@ function parceTableDataToJson(tableID)
 
     // find select value where <select> exist
     for (let i = 1; i < row.length; i++) {
-        for (let j = 3; j < 6; j++) {
-            data[i][j] = $(data[i][j]).val();
-        }
+        // for (let j = 3; j < 6; j++) {
+        //     data[i][j] = $(data[i][j]).val();
+        // }
+        data[i][3] = $(data[i][3]).val();
     }
 
     // create object from array
@@ -676,8 +638,6 @@ function parceTableDataToJson(tableID)
                 mobility: data[i][15],
                 date_time: data[i][16],
                 noties: data[i][17],
-                materials_id: data[i][4],
-                manufacturers_id: data[i][5],
                 series_id: data[i][3]
             }
             //outArr[i - 1] = JSON.stringify(dataObj)
@@ -698,4 +658,102 @@ function changeSelectedAtr()
         $(sel).children('option').attr('selected', false);
         $(sel).children('option[value="' + selectedVal + '"]').attr('selected', true);
     });
+}
+
+function delSamplesForm() {
+    $('#deldialog').dialog('open');
+}
+
+function delData() {
+    // Get selected samples ID
+    let chbkArr = [];
+    $('.delchkb').each(function () {
+        if($(this).prop('checked')) {
+            chbkArr.push($(this).attr('id'));
+        }
+    });
+
+    // Del selectet samples
+    $.ajax({
+        url: baseURL + '/delsamples',
+        type: 'DELETE',
+        data: {
+            "userToken": TOKEN,
+            "id": chbkArr
+        },
+        success: function(answer) {
+            //alert(JSON.stringify(answer));
+            if(!answer.err) {
+                alert(answer.answer);
+            }
+            else {
+                alert(answer.err);
+            }
+        }
+    });
+}
+
+function addSamplesForm()
+{
+    let seriesList = getSeries();
+    let serieStr = buildSeries(seriesList, null);
+
+    $('#adddialog').dialog('open');
+
+    $('#adddialog').html(
+        '<div class="line-block">' +
+        '<div id="addseriesselector">Select serie:' + serieStr + '</div>' +
+        '<a class="btn" href="javascript:addRow()">+</a>' +
+        '<div id="rownimber">0</div>' +
+        '</div>' +
+        '<table id="addtable" class="table"><tr>' +
+        '<td>#</td>' +
+        '<td>Name</td>' +
+        '<td>Serie</td>' +
+        '<td>I<div>[' + currentUnits + ']</div></td>'+
+        '<td><div>R</div><div>[&Omega;]</div></td>' +
+        '<td><div>R&#10065;</div><div>[&Omega;]</div></td>' +
+        '<td><div>V<sub>0</sub></div><div>[' + voltageUnits + ']</div></td>' +
+        '<td><div>V<sub>H</sub></div><div>[' + voltageUnits + ']</div></td>' +
+        '<td><div>S<sub>I</sub></div><div>[V/A/T]</div></td>' +
+        '<td><div>S<sub>V</sub></div><div>[V/V/T]</div></td>' +
+        '<td><div>n</div><div>[sm<sup>-3</sup>]</div></td>' +
+        '<td><div>&rho; &times; 10<sup>4</sup></div><div>[&Omega;&middot;cm]</div></td>' +
+        '<td><div>&mu;</div><div>[sm<sup>2</sup>/V/sec]</div></td>' +
+        '<td>DateTime</td>' +
+        '<td>Noties</td>' +
+        '</tr></table>'
+    );
+}
+
+function addRow()
+{
+    let rowNumber = parseInt($('#rownimber').text()) + 1;
+    $('#rownimber').text(rowNumber);
+
+    $('#addtable').append(
+        '<tr>' +
+        '<td>' + rowNumber + '</td>' +
+        '<td contenteditable="true"></td>' +
+        '<td>' + $('#addseriesselector select option:selected').text() + '</td>' +
+        '<td contenteditable="true"></td>'+
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td contenteditable="true"></td>' +
+        '<td class="hidden-dt">' + $('#addseriesselector select').val() + '</td>' +
+        '</tr>'
+    );
+}
+
+function addData()
+{
+
 }

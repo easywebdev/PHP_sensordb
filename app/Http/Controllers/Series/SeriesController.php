@@ -117,6 +117,7 @@ class SeriesController extends Controller
             'vunits' => 'in:V,mV,mkV,nV',
             'iunits' => 'in:A,mA,mkA,nA',
             'manufacturers_id' => 'exists:manufacturers,id',
+            'materials_id' => 'exists:materials,id',
         ];
         $validator = $this->validateData($request->input(), $validateRules);
 

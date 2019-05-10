@@ -570,7 +570,8 @@ Route::middleware(['rootadmin'])->group(function () {
  *               "offset": 3,
  *               "material_type": "3D",
  *               "vunits": "mkV",
- *               "manufacturers_id": 1
+ *               "manufacturers_id": 1,
+ *               "materials_id": 1
  *           },
  *           {
  *               "id": 2,
@@ -584,7 +585,8 @@ Route::middleware(['rootadmin'])->group(function () {
  *               "offset": 300,
  *               "material_type": "3D",
  *               "vunits": "mkV",
- *               "manufacturers_id": 2
+ *               "manufacturers_id": 2,
+ *               "materials_id": 1
  *           }
  *       ]
  *  }
@@ -631,7 +633,8 @@ Route::middleware(['rootadmin'])->group(function () {
      *               "offset": 3,
      *               "material_type": "3D",
      *               "vunits": "mkV",
-     *               "manufacturers_id": 1
+     *               "manufacturers_id": 1,
+     *               "materials_id": 1
      *           }
      *  }
      *
@@ -678,7 +681,8 @@ Route::middleware(['rootadmin'])->group(function () {
      *      "offset": 3,
      *      "material_type": "3D",
      *      "vunits": "mkV",
-     *      "manufacturers_id": 1
+     *      "manufacturers_id": 1,
+     *      "materials_id": 1
      *  }
      *
      * @apiSuccess {String} err null.
@@ -732,7 +736,8 @@ Route::middleware(['rootadmin'])->group(function () {
      *      "offset": 3,
      *      "material_type": "3D",
      *      "vunits": "mkV",
-     *      "manufacturers_id": 1
+     *      "manufacturers_id": 1,
+     *      "materials_id": 1
      *  }
      *
      * @apiSuccess {String} err null.

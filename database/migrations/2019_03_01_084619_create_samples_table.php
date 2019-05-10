@@ -28,17 +28,7 @@ class CreateSamplesTable extends Migration
             $table->double('mobility');
             $table->timestamp('date_time')->nullable();
             $table->string('noties');
-            $table->integer('materials_id')->unsigned();
-            $table->integer('manufacturers_id')->unsigned();
             $table->integer('series_id')->unsigned();
-
-            $table->foreign('materials_id')->references('id')->on('materials')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('manufacturers_id')->references('id')->on('manufacturers')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
 
             $table->foreign('series_id')->references('id')->on('series')
                 ->onDelete('cascade')

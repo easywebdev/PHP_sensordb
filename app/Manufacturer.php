@@ -25,4 +25,8 @@ class Manufacturer extends Model
         'name',
         'person',
     ];
+
+    public function series() {
+        return $this->hasMany('App\Series', 'manufacturers_id', 'id');
+    }
 }

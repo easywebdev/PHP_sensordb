@@ -28,5 +28,20 @@ class Series extends Model
         'vunits',
         'iunits',
         'manufacturers_id',
+        'materials_id',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function material() {
+        return $this->belongsTo('App\Material', 'materials_id', 'id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function manufacturer() {
+        return $this->belongsTo('App\Manufacturer', 'manufacturers_id', 'id');
+    }
 }

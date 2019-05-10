@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Samples;
 
+use App\Manufacturer;
+use App\Material;
 use App\Samples;
+use App\Series;
 use App\Tasks\ConvertUnits;
 use App\Tasks\MyValidator;
 use Illuminate\Http\Request;
@@ -22,20 +25,51 @@ class SamplesController
         $count = null;
 
         //Filters parameters
-        $materialsID = $request->input('materials_id');
-        $manufacturersID = $request->input('manufacturers_id');
         $seriesID = $request->input('series_id');
+        $materialsID = null;                              // serieID for selected material
+        $manufacturersID = null;                          // serieID for selected manufacturers
         $DateTime = $request->input('DateTime');
         $findItem = $request->input('findvalue');
         $itemCount = $request->input('itemCount');
 
+        if($request->input('materials_id')) {
+            $materials = Material::find($request->input('materials_id'));
+
+            if(count($materials) != 0) {
+                foreach ($materials as $material) {
+                    $serie = $material->series;
+                    foreach ($serie as $data) {
+                        $materialsID[] = $data['id'];
+                    }
+                }
+            }
+            else {
+                $materialsID[] = 0;
+            }
+        }
+
+        if($request->input('manufacturers_id')) {
+            $manufacturers = Manufacturer::find($request->input('manufacturers_id'));
+            if(count($manufacturers) != 0) {
+                foreach ($manufacturers as $manufacturer) {
+                    $serie = $manufacturer->series;
+                    foreach ($serie as $data) {
+                        $manufacturersID[] = $data['id'];
+                    }
+                }
+            }
+            else {
+                $manufacturersID[] = 0;
+            }
+        }
+
         // Conditional clauses DB request
-        $samples = Samples::when($manufacturersID, function ($query, $manufacturersID) {
-            return $query->whereIn('manufacturers_id', $manufacturersID);
-        })->when($materialsID, function ($query, $materialsID){
-            return $query->whereIn('materials_id', $materialsID);
-        })->when($seriesID, function ($query, $seriesID) {
+        $samples = Samples::when($seriesID, function ($query, $seriesID) {
             return $query->whereIn('series_id', $seriesID);
+        })->when($materialsID, function ($query, $materialsID) {
+            return $query->whereIn('series_id', $materialsID);
+        })->when($manufacturersID, function ($query, $manufacturersID) {
+            return $query->whereIn('series_id', $manufacturersID);
         })->when($DateTime, function($query, $DateTime) {
             return $query->where('date_time', '>=', $DateTime);
         })->when($findItem, function($query, $findItem) {
@@ -50,11 +84,11 @@ class SamplesController
         }
 
         // Add names
-//        for ($i = 0; $i < count($samples); $i++) {
-//            $samples[$i]['series_name'] = Samples::find($samples[$i]['id'])->serie['name'];
-//            $samples[$i]['material_name'] = Samples::find($samples[$i]['id'])->material['name'];
-//            $samples[$i]['manufacturer_name'] = Samples::find($samples[$i]['id'])->manufacturer['name'];
-//        }
+        for ($i = 0; $i < count($samples); $i++) {
+            $samples[$i]['series_name'] = Samples::find($samples[$i]['id'])->serie['name'];
+            $samples[$i]['material_name'] = Series::find($samples[$i]['series_id'])->material['name'];
+            $samples[$i]['manufacturer_name'] = Series::find($samples[$i]['series_id'])->manufacturer['name'];
+        }
 
         return[
             'err'   => $err,
@@ -74,14 +108,31 @@ class SamplesController
         //Validation
         $validateRules = [
             'samples.*.name' => 'required',
-            'samples.*.materials_id' => 'exists:materials,id',
-            'samples.*.manufacturers_id' => 'exists:manufacturers,id',
             'samples.*.series_id' => 'exists:series,id',
+            'samples.*.current' => 'numeric',
+            'samples.*.resistance' => 'numeric',
+            'samples.*.sqr_resistance' => 'numeric',
+            'samples.*.offset' => 'numeric',
+            'samples.*.hall_voltage' => 'numeric',
+            'samples.*.sensitive_i' => 'numeric',
+            'samples.*.sensitive_v' => 'numeric',
+            'samples.*.concentration' => 'numeric',
+            'samples.*.resistivity' => 'numeric',
+            'samples.*.mobility' => 'numeric',
+            'samples.*.date_time' => 'date',
+            'vunits' => 'in:V,mV,mkV,nV',
+            'iunits' => 'in:A,mA,mkA,nA',
         ];
         $validator = $this->validateData($request->input(), $validateRules);
 
         if(!$validator) {
-            Samples::insert($request->input('samples'));
+            // Create new array with samples data
+            $samplesArr = $request->input('samples');
+
+            for($i = 0; $i < count($samplesArr); $i++) {
+                $samplesArr[$i] = $this->recalculateUnits($samplesArr[$i], $request->input('iunits'), $request->input('vunits'));
+            }
+            Samples::insert($samplesArr);
             $answer = 'Samples was add';
         }
         else {
@@ -107,8 +158,6 @@ class SamplesController
         $validateRules = [
             'samples.*.id' => 'required|exists:samples,id',
             'samples.*.name' => 'required',
-            'samples.*.materials_id' => 'exists:materials,id',
-            'samples.*.manufacturers_id' => 'exists:manufacturers,id',
             'samples.*.series_id' => 'exists:series,id',
             'samples.*.current' => 'numeric',
             'samples.*.resistance' => 'numeric',

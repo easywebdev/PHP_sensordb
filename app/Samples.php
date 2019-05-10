@@ -29,8 +29,6 @@ class Samples extends Model
         'mobility',
         'date_time',
         'noties',
-        'materials_id',
-        'manufacturers_id',
         'series_id',
     ];
 
@@ -39,19 +37,5 @@ class Samples extends Model
      */
     public function serie() {
         return $this->belongsTo('App\Series', 'series_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function material() {
-        return $this->belongsTo('App\Material', 'materials_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function manufacturer() {
-        return $this->belongsTo('App\Manufacturer', 'manufacturers_id', 'id');
     }
 }

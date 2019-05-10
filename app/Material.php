@@ -24,4 +24,8 @@ class Material extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function series() {
+        return $this->hasMany('App\Series', 'materials_id', 'id');
+    }
 }
