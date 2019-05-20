@@ -1,10 +1,10 @@
 <div class="header-top container">
-    <div class="header-top__item logo">
-        Logo
+    <div class="header-top__item">
+        <img class="logo" src="images/msl_logo_0.png" alt="logo">
     </div>
 
     <div class="header-top__item header-text">
-        MSL
+        <h1 class="h1">msl sensors data base</h1>
     </div>
 
     <div class="header-top__item header-manage">

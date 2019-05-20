@@ -30,8 +30,12 @@
 /**/
 
 /*=== Common ===*/
-.h1 {
+body {
+    font-family: Verdana;
+}
 
+.h1 {
+    font-size: 48px;
 }
 .h2 {
     font-size: 16px;
@@ -107,6 +111,9 @@
 /*=== Header ===*/
 .header-top {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
@@ -124,7 +131,7 @@
 }
 
 .header-text {
-    width: 100%;
+    text-transform: uppercase;
 }
 
 .header-manage {

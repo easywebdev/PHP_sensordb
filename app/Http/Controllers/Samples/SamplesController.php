@@ -205,7 +205,7 @@ class SamplesController
     public function delSamples(Request $request)
     {
         $err = null;
-        $answer = ' Some samples have not been deleted';
+        $answer = 'Some samples have not been deleted';
 
         $samplesIDArr = $request->input('id');
 

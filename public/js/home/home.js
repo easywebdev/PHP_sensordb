@@ -705,6 +705,17 @@ function addSamplesForm()
         '<div id="addseriesselector">Select serie:' + serieStr + '</div>' +
         '<a class="btn" href="javascript:addRow()">+</a>' +
         '<div id="rownimber">0</div>' +
+        '<select id="iunits" class="">' +
+        '<option value="nA">nA</option>' +
+        '<option value="mkA">mkA</option>' +
+        '<option value="mA" selected>mA</option>' +
+        '<option value="A">A</option>' +
+        '</select>' +
+        '<select id="vunits" class="">' +
+        '<option value="nV">nV</option>' +
+        '<option value="mkV">mkV</option>' +
+        '<option value="mV" selected>mV</option>' +
+        '<option value="V">V</option></select>' +
         '</div>' +
         '<table id="addtable" class="table"><tr>' +
         '<td>#</td>' +
@@ -722,6 +733,7 @@ function addSamplesForm()
         '<td><div>&mu;</div><div>[sm<sup>2</sup>/V/sec]</div></td>' +
         '<td>DateTime</td>' +
         '<td>Noties</td>' +
+        '<td>Remove</td>' +
         '</tr></table>'
     );
 }
@@ -733,7 +745,7 @@ function addRow()
 
     $('#addtable').append(
         '<tr>' +
-        '<td>' + rowNumber + '</td>' +
+        '<td class="rownumber">' + rowNumber + '</td>' +
         '<td contenteditable="true"></td>' +
         '<td>' + $('#addseriesselector select option:selected').text() + '</td>' +
         '<td contenteditable="true"></td>'+
@@ -746,14 +758,99 @@ function addRow()
         '<td contenteditable="true"></td>' +
         '<td contenteditable="true"></td>' +
         '<td contenteditable="true"></td>' +
+        '<td contenteditable="true">' + getDateTime() + '</td>' +
         '<td contenteditable="true"></td>' +
-        '<td contenteditable="true"></td>' +
+        '<td><a class="btn del" href="#" onclick="removeRow(this)">-</a></td>' +
         '<td class="hidden-dt">' + $('#addseriesselector select').val() + '</td>' +
         '</tr>'
     );
 }
 
+function getDateTime()
+{
+    let DT = new Date();
+    DT.getDate();
+    return DT.getFullYear() + '-' + ('0' + (DT.getMonth() + 1)).slice(-2) + '-' + ('0' + DT.getDate()).slice(-2) +
+            ' ' + ('0' + DT.getHours()).slice(-2) + ':' + ('0' + DT.getMinutes()).slice(-2) + ':' + ('0' + DT.getSeconds()).slice(-2);
+}
+
+function removeRow(elem)
+{
+    let rowIndex = $(elem).parent().parent().index();
+
+    // decrement rows number
+    $('#addtable  tr').each(function (i) {
+        if(i > rowIndex) {
+            let num = parseInt($(this).find("td:first").text()) - 1;
+            $(this).find("td:first").text(num);
+        }
+    });
+
+    // del row and decrement count
+    $(elem).parent().parent().remove();
+    $('#rownimber').text(parseInt($('#rownimber').text()) - 1);
+}
+
 function addData()
 {
+    let data = [];
+    let row = [];
+    let dataObj = new Object();
+    let outArr = [];
 
+    // create rows array
+    $('#addtable  tr').each(function (i, elem) {
+        row[i] = $(elem).html();
+    });
+
+    // create array of data
+    for (let m = 0; m < row.length; m++) {
+        if(m > 0) {
+            data[m] = [];
+            $(row[m] + ' td').each( function (j, col) {
+                data[m][j] = $(col).html();
+                dataObj = {
+                    name: data[m][1],
+                    current: data[m][3],
+                    resistance: data[m][4],
+                    sqr_resistance: data[m][5],
+                    offset: data[m][6],
+                    hall_voltage: data[m][7],
+                    sensitive_i: data[m][8],
+                    sensitive_v: data[m][9],
+                    concentration: data[m][10],
+                    resistivity: data[m][11],
+                    mobility: data[m][12],
+                    date_time: data[m][13],
+                    noties: data[m][14],
+                    series_id: data[m][16]
+                }
+            });
+
+            outArr.push(dataObj);
+        }
+    }
+
+    $.ajax({
+        url: baseURL + '/addsamples',
+        type: 'POST',
+        data: {
+            "userToken": TOKEN,
+            "iunits": $('#iunits').val(),
+            "vunits": $('#vunits').val(),
+            "samples": outArr
+        },
+        success: function(answer) {
+            //alert(JSON.stringify(answer));
+            if(!answer.err) {
+                alert(answer.answer);
+                //buildPage('?page=' + currentPage);
+            }
+            else {
+                alert(answer.err);
+            }
+        }
+    });
+
+    console.log(outArr);
 }

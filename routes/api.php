@@ -977,15 +977,431 @@ Route::middleware(['rootadmin'])->group(function () {
 /**/
 
 /* Samples */
+/**
+ * @api {get} /getsamples?page={page} Get Samples
+ * @apiName Get Samples
+ * @apiGroup Samples
+ * @apiPermission All Authorised
+ *
+ * @apiParam {Number} page Page number for paginate For first page can be '/getsamples'.
+ * @apiParam {String} userToken Current user token.
+ * @apiParam {Array} materials_id Materials unique ID.
+ * @apiParam {Array} manufacturers_id Manufacturers unique ID.
+ * @apiParam {Array} series_id Series unique ID.
+ * @apiParam {String} DateTime Sample measure time.
+ * @apiParam {String} findvalue Find text by Name or Note.
+ * @apiParam {Number} itemCount Find text by Name or Note.
+ * @apiParam {String} order_by Order samples by: 'Name', 'R', 'SI', 'n', 'ρ', 'μ', 'DateTime'.
+ * @apiParam {String} order Order samples direct or inverce: 'asc', 'desc'.
+ * @apiParamExample {json} Request-Example:
+ *  {
+ *      "userToken" : "af4c236904b2069d556e33e73f2aa033",
+ *      "materials_id":[3,2],
+ *      "manufacturers_id":[1,2],
+ *      "series_id":[1,2],
+ *      "DateTime":"2019-05-12 15:45:00",
+ *      "findvalue":"some note",
+ *      "itemCount":5,
+ *      "order_by":"name",
+ *      "order":"asc"
+ *  }
+ *
+ * @apiSuccess {String} err null.
+ * @apiSuccess {Object} samples All samples with paginate and paginate data.
+ * @apiSuccess {Array} data All samples data.
+ * @apiSuccess {Number} current_page Current paginate page.
+ * @apiSuccess {String} first_page_url First page URL.
+ * @apiSuccess {Number} from From paginate page.
+ * @apiSuccess {Number} last_page Last paginate page.
+ * @apiSuccess {String} last_page_url Last page URL.
+ * @apiSuccess {String} next_page_url Last page URL.
+ * @apiSuccess {String} path Main path page URL.
+ * @apiSuccess {Number} per_page Samples per page.
+ * @apiSuccess {String} prev_page_url Previous page URL.
+ * @apiSuccess {Number} to To paginate page.
+ * @apiSuccess {Number} total Total Samples count.
+ * @apiSuccessExample Success-Response:
+ *  {
+ *      "err": null,
+ *      "samples": {
+ *          "current_page": 1,
+ *          "data": [
+ *          {
+ *              "id": 2,
+ *              "name": "name-2",
+ *              "current": 10400.000000000004,
+ *              "resistance": 50.4,
+ *              "sqr_resistance": 30.4,
+ *              "offset": 2400,
+ *              "hall_voltage": 3400,
+ *              "sensitive_i": 12.4,
+ *              "sensitive_v": 8.4,
+ *              "concentration": 540000000000000000,
+ *              "resistivity": 0.324,
+ *              "mobility": 20000.4,
+ *              "date_time": "2000-01-01 00:00:00",
+ *              "noties": "noty",
+ *              "series_id": 2,
+ *              "iunits": "mkA",
+ *              "vunits": "mkV",
+ *              "series_name": "series-2",
+ *              "material_name": "InAs",
+ *              "manufacturer_name": "ACHEN"
+ *          },
+ *          {
+ *              "id": 4,
+ *              "name": "name-4",
+ *              "current": 10,
+ *              "resistance": 50,
+ *              "sqr_resistance": 30,
+ *              "offset": 199.99999999999991,
+ *              "hall_voltage": 300,
+ *              "sensitive_i": 12,
+ *              "sensitive_v": 8,
+ *              "concentration": 500000000000000000,
+ *              "resistivity": 0.32,
+ *              "mobility": 20000,
+ *              "date_time": "2000-01-01 00:00:00",
+ *              "noties": "noty",
+ *              "series_id": 2,
+ *              "iunits": "mkA",
+ *              "vunits": "mkV",
+ *              "series_name": "series-2",
+ *              "material_name": "InAs",
+ *              "manufacturer_name": "ACHEN"
+ *          },
+ *          {
+ *              "id": 6,
+ *              "name": "name-6",
+ *              "current": 10,
+ *              "resistance": 50,
+ *              "sqr_resistance": 30,
+ *              "offset": 200,
+ *              "hall_voltage": 300,
+ *              "sensitive_i": 12,
+ *              "sensitive_v": 8,
+ *              "concentration": 500000000000000000,
+ *              "resistivity": 0.32,
+ *              "mobility": 20000,
+ *              "date_time": "2000-01-01 00:00:00",
+ *              "noties": "noty",
+ *              "series_id": 2,
+ *              "iunits": "mkA",
+ *              "vunits": "mkV",
+ *              "series_name": "series-2",
+ *              "material_name": "InAs",
+ *              "manufacturer_name": "ACHEN"
+ *          }
+ *          ],
+ *          "first_page_url": "http://sensordb.loc/api/getsamples?page=1",
+ *          "from": 1,
+ *          "last_page": 1,
+ *          "last_page_url": "http://sensordb.loc/api/getsamples?page=1",
+ *          "next_page_url": null,
+ *          "path": "http://sensordb.loc/api/getsamples",
+ *          "per_page": 5,
+ *          "prev_page_url": null,
+ *          "to": 3,
+ *          "total": 3
+ *      }
+ *  }
+ *
+ * @apiError {Array} err Server errors array
+ * @apiErrorExample {json} Error-Response:
+ *  {
+ *       "err": [
+ *           "No Permission"
+ *       ]
+ *   }
+ */
 Route::get('getsamples', 'Samples\SamplesController@getSamples')->middleware('allauth');
 
 Route::middleware(['rootadmin'])->group(function () {
+    /**
+     * @api {post} /addsamples Add Samples
+     * @apiName Add Samples
+     * @apiGroup Samples
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} iunits Current Units: 'nA', 'mkA', 'mA', 'A'.
+     * @apiParam {String} vunits Voltage Units: 'nV', 'mkV', 'mV', 'V'.
+     * @apiParam {Array} samples Array of JSON ogjects.
+     * @apiParam {String} name Sensor name.
+     * @apiParam {Float} current Sensor current.
+     * @apiParam {Float} resistance Sensor resistance.
+     * @apiParam {Float} sqr_resistance Sensor surface resistance.
+     * @apiParam {Float} offset Sensor offset voltage.
+     * @apiParam {Float} hall_voltage Sensor Hall voltage.
+     * @apiParam {Float} sensitive_i Sensor Sencitivity at current source.
+     * @apiParam {Float} sensitive_v Sensor Sencitivity at voltage source.
+     * @apiParam {Float} concentration Sensor charge carrier concentration.
+     * @apiParam {Float} resistivity Sensor resistivity.
+     * @apiParam {Float} mobility Sensor mobility.
+     * @apiParam {String} date_time Sensor measure Date Time.
+     * @apiParam {String} noties Sensor measure Notes.
+     * @apiParam {Number} series_id Sensor Series ID.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken":"3fb024e46e221b100b3b948be1c5eb79",
+     *      "iunits":"mA",
+     *      "vunits":"mV",
+     *      "samples":[
+     *      {
+     *          "name":"name-7",
+     *          "current":10,
+     *          "resistance":50,
+     *          "sqr_resistance":30,
+     *          "offset":2,
+     *          "hall_voltage":3,
+     *          "sensitive_i": 12,
+     *          "sensitive_v":8,
+     *          "concentration":5E17,
+     *          "resistivity": 0.32,
+     *          "mobility": 20000,
+     *          "date_time":"2000-01-01 00:00:00",
+     *          "noties":"noty",
+     *          "series_id":3
+     *      },
+     *      {
+     *          "name":"name-8",
+     *          "current":0.01,
+     *          "resistance":50,
+     *          "sqr_resistance":30,
+     *          "offset":0.2,
+     *          "hall_voltage":0.3,
+     *          "sensitive_i": 12,
+     *          "sensitive_v":8,
+     *          "concentration":5E17,
+     *          "resistivity": 0.32,
+     *          "mobility": 20000,
+     *          "date_time":"2000-01-01 00:00:00",
+     *          "noties":"noty",
+     *          "series_id":3
+     *      }
+     *      ]
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Information about add Sensors.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "Samples was add"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer Sensors was not added.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "The selected iunits is invalid.",
+     *           "The samples.1.current must be a number."
+     *       ],
+     *       "answer": "Samples was not added"
+     *   }
+     */
     Route::post('addsamples', 'Samples\SamplesController@addSamples');
 
+    /**
+     * @api {put} /editsamples Edit Samples
+     * @apiName Edit Samples
+     * @apiGroup Samples
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} iunits Current Units: 'nA', 'mkA', 'mA', 'A'.
+     * @apiParam {String} vunits Voltage Units: 'nV', 'mkV', 'mV', 'V'.
+     * @apiParam {Array} samples Array of JSON ogjects.
+     * @apiParam {Number} id Sensor unique ID.
+     * @apiParam {String} name Sensor name.
+     * @apiParam {Float} current Sensor current.
+     * @apiParam {Float} resistance Sensor resistance.
+     * @apiParam {Float} sqr_resistance Sensor surface resistance.
+     * @apiParam {Float} offset Sensor offset voltage.
+     * @apiParam {Float} hall_voltage Sensor Hall voltage.
+     * @apiParam {Float} sensitive_i Sensor Sencitivity at current source.
+     * @apiParam {Float} sensitive_v Sensor Sencitivity at voltage source.
+     * @apiParam {Float} concentration Sensor charge carrier concentration.
+     * @apiParam {Float} resistivity Sensor resistivity.
+     * @apiParam {Float} mobility Sensor mobility.
+     * @apiParam {String} date_time Sensor measure Date Time.
+     * @apiParam {String} noties Sensor measure Notes.
+     * @apiParam {Number} series_id Sensor Series ID.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken":"3fb024e46e221b100b3b948be1c5eb79",
+     *      "iunits":"mA",
+     *      "vunits":"mV",
+     *      "samples":[
+     *      {
+     *          "id":1,
+     *          "name":"name-7",
+     *          "current":10,
+     *          "resistance":50,
+     *          "sqr_resistance":30,
+     *          "offset":2,
+     *          "hall_voltage":3,
+     *          "sensitive_i": 12,
+     *          "sensitive_v":8,
+     *          "concentration":5E17,
+     *          "resistivity": 0.32,
+     *          "mobility": 20000,
+     *          "date_time":"2000-01-01 00:00:00",
+     *          "noties":"noty",
+     *          "series_id":3
+     *      },
+     *      {
+     *          "id":2,
+     *          "name":"name-8",
+     *          "current":0.01,
+     *          "resistance":50,
+     *          "sqr_resistance":30,
+     *          "offset":0.2,
+     *          "hall_voltage":0.3,
+     *          "sensitive_i": 12,
+     *          "sensitive_v":8,
+     *          "concentration":5E17,
+     *          "resistivity": 0.32,
+     *          "mobility": 20000,
+     *          "date_time":"2000-01-01 00:00:00",
+     *          "noties":"noty",
+     *          "series_id":3
+     *      }
+     *      ]
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer Information about edit Sensors data.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "Changes have been saved"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer No changes applied.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "The selected samples.0.id is invalid.",
+     *           "The samples.1.current must be a number."
+     *       ],
+     *       "answer": "No changes applied"
+     *   }
+     */
     Route::put('editsamples', 'Samples\SamplesController@editSamples');
 
+    /**
+     * @api {delete} /delsamples Del Samples
+     * @apiName Del Samples
+     * @apiGroup Samples
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {Array} id Array of unique sensors id.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken" : "af4c236904b2069d556e33e73f2aa033",
+     *      "id":[49, 50]
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer All selected samples have been deleted.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "All selected samples have been deleted"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer Material was not deleted.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "Sample with ID = 11 not exist",
+     *           "Sample with ID = 12 not exist"
+     *       ],
+     *       "answer": "Some samples have not been deleted"
+     *   }
+     */
     Route::delete('delsamples', 'Samples\SamplesController@delSamples');
 });
+/**/
+
+/* Upload Files */
+Route::middleware(['rootadmin'])->group(function () {
+    /**
+     * @api {post} /addfile Add File
+     * @apiName Add file
+     * @apiGroup Files
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {file} image Input type="file" .
+     * @apiParamExample {json} Request-Example:
+     *  <input type="file">
+     *  <input type="hidden" value = "af4c236904b2069d556e33e73f2aa033">
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} image Relative file path.
+     * @apiSuccess {String} answer File have been uploaded successfully.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "image": "uploads/general-purpose_application.png",
+     *      "answer": "File have been uploaded successfully"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiSuccess {String} image null.
+     * @apiError {String} answer File have not been uploaded.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "The image field is required."
+     *       ],
+     *       "image": null,
+     *       "answer": "File have not been uploaded"
+     *   }
+     */
+    Route::post('addfile', 'Files\FilesController@addFile');
+
+    /**
+     * @api {delete} /delfile Del File
+     * @apiName Del file
+     * @apiGroup Files
+     * @apiPermission root, admin
+     *
+     * @apiParam {String} userToken Current user token.
+     * @apiParam {String} filename Relative file path.
+     * @apiParamExample {json} Request-Example:
+     *  {
+     *      "userToken":"af4c236904b2069d556e33e73f2aa033",
+     *      "filename":"uploads/general-purpose_application.png"
+     *  }
+     *
+     * @apiSuccess {String} err null.
+     * @apiSuccess {String} answer File have been deleted.
+     * @apiSuccessExample Success-Response:
+     *  {
+     *      "err": null,
+     *      "answer": "File have been deleted"
+     *  }
+     *
+     * @apiError {Array} err Server errors array
+     * @apiError {String} answer Fire have not been deleted.
+     * @apiErrorExample {json} Error-Response:
+     *  {
+     *       "err": [
+     *           "File does not exist"
+     *       ],
+     *       "answer": "Fire have not been deleted"
+     *   }
+     */
+    Route::delete('delfile', 'Files\FilesController@delFile');
+});
+
 /**/
 
 /* Additional Routs */

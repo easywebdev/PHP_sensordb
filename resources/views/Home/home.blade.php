@@ -47,6 +47,8 @@
             <div class="manage-buttons"></div>
         </div>
 
+        <a class="del" href="#" onclick="removeRow(this)">xxxxx</a>
+
         <div id="adddialog" class="dialog" title="Add Samples"></div>
         <div id="deldialog" class="dialog" title="Del Samples">
             Are You sure You want to delete selected samples?

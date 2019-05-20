@@ -390,6 +390,205 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/addfile",
+    "title": "Add File",
+    "name": "Add_file",
+    "group": "Files",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "file",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Input type=&quot;file&quot; .</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "<input type=\"file\">\n<input type=\"hidden\" value = \"af4c236904b2069d556e33e73f2aa033\">",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "image",
+            "description": "<p>Relative file path.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>File have been uploaded successfully.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"image\": \"uploads/general-purpose_application.png\",\n    \"answer\": \"File have been uploaded successfully\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>File have not been uploaded.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The image field is required.\"\n     ],\n     \"image\": null,\n     \"answer\": \"File have not been uploaded\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Files"
+  },
+  {
+    "type": "delete",
+    "url": "/delfile",
+    "title": "Del File",
+    "name": "Del_file",
+    "group": "Files",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "filename",
+            "description": "<p>Relative file path.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\":\"af4c236904b2069d556e33e73f2aa033\",\n    \"filename\":\"uploads/general-purpose_application.png\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>File have been deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"File have been deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Fire have not been deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"File does not exist\"\n     ],\n     \"answer\": \"Fire have not been deleted\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Files"
+  },
+  {
+    "type": "post",
     "url": "/addmanufacturers",
     "title": "Add Manufacturer",
     "name": "Add_Manufacturer",
@@ -1341,6 +1540,754 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/addsamples",
+    "title": "Add Samples",
+    "name": "Add_Samples",
+    "group": "Samples",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "iunits",
+            "description": "<p>Current Units: 'nA', 'mkA', 'mA', 'A'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "vunits",
+            "description": "<p>Voltage Units: 'nV', 'mkV', 'mV', 'V'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "samples",
+            "description": "<p>Array of JSON ogjects.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Sensor name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "current",
+            "description": "<p>Sensor current.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "resistance",
+            "description": "<p>Sensor resistance.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "sqr_resistance",
+            "description": "<p>Sensor surface resistance.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Sensor offset voltage.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "hall_voltage",
+            "description": "<p>Sensor Hall voltage.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "sensitive_i",
+            "description": "<p>Sensor Sencitivity at current source.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "sensitive_v",
+            "description": "<p>Sensor Sencitivity at voltage source.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "concentration",
+            "description": "<p>Sensor charge carrier concentration.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "resistivity",
+            "description": "<p>Sensor resistivity.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "mobility",
+            "description": "<p>Sensor mobility.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "date_time",
+            "description": "<p>Sensor measure Date Time.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "noties",
+            "description": "<p>Sensor measure Notes.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "series_id",
+            "description": "<p>Sensor Series ID.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n    \"iunits\":\"mA\",\n    \"vunits\":\"mV\",\n    \"samples\":[\n    {\n        \"name\":\"name-7\",\n        \"current\":10,\n        \"resistance\":50,\n        \"sqr_resistance\":30,\n        \"offset\":2,\n        \"hall_voltage\":3,\n        \"sensitive_i\": 12,\n        \"sensitive_v\":8,\n        \"concentration\":5E17,\n        \"resistivity\": 0.32,\n        \"mobility\": 20000,\n        \"date_time\":\"2000-01-01 00:00:00\",\n        \"noties\":\"noty\",\n        \"series_id\":3\n    },\n    {\n        \"name\":\"name-8\",\n        \"current\":0.01,\n        \"resistance\":50,\n        \"sqr_resistance\":30,\n        \"offset\":0.2,\n        \"hall_voltage\":0.3,\n        \"sensitive_i\": 12,\n        \"sensitive_v\":8,\n        \"concentration\":5E17,\n        \"resistivity\": 0.32,\n        \"mobility\": 20000,\n        \"date_time\":\"2000-01-01 00:00:00\",\n        \"noties\":\"noty\",\n        \"series_id\":3\n    }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Information about add Sensors.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Samples was add\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Sensors was not added.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The selected iunits is invalid.\",\n         \"The samples.1.current must be a number.\"\n     ],\n     \"answer\": \"Samples was not added\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Samples"
+  },
+  {
+    "type": "delete",
+    "url": "/delsamples",
+    "title": "Del Samples",
+    "name": "Del_Samples",
+    "group": "Samples",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Array of unique sensors id.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"id\":[49, 50]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>All selected samples have been deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"All selected samples have been deleted\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Material was not deleted.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"Sample with ID = 11 not exist\",\n         \"Sample with ID = 12 not exist\"\n     ],\n     \"answer\": \"Some samples have not been deleted\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Samples"
+  },
+  {
+    "type": "put",
+    "url": "/editsamples",
+    "title": "Edit Samples",
+    "name": "Edit_Samples",
+    "group": "Samples",
+    "permission": [
+      {
+        "name": "root, admin"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "iunits",
+            "description": "<p>Current Units: 'nA', 'mkA', 'mA', 'A'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "vunits",
+            "description": "<p>Voltage Units: 'nV', 'mkV', 'mV', 'V'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "samples",
+            "description": "<p>Array of JSON ogjects.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Sensor unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Sensor name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "current",
+            "description": "<p>Sensor current.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "resistance",
+            "description": "<p>Sensor resistance.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "sqr_resistance",
+            "description": "<p>Sensor surface resistance.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "offset",
+            "description": "<p>Sensor offset voltage.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "hall_voltage",
+            "description": "<p>Sensor Hall voltage.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "sensitive_i",
+            "description": "<p>Sensor Sencitivity at current source.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "sensitive_v",
+            "description": "<p>Sensor Sencitivity at voltage source.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "concentration",
+            "description": "<p>Sensor charge carrier concentration.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "resistivity",
+            "description": "<p>Sensor resistivity.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Float",
+            "optional": false,
+            "field": "mobility",
+            "description": "<p>Sensor mobility.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "date_time",
+            "description": "<p>Sensor measure Date Time.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "noties",
+            "description": "<p>Sensor measure Notes.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "series_id",
+            "description": "<p>Sensor Series ID.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n    \"iunits\":\"mA\",\n    \"vunits\":\"mV\",\n    \"samples\":[\n    {\n        \"id\":1,\n        \"name\":\"name-7\",\n        \"current\":10,\n        \"resistance\":50,\n        \"sqr_resistance\":30,\n        \"offset\":2,\n        \"hall_voltage\":3,\n        \"sensitive_i\": 12,\n        \"sensitive_v\":8,\n        \"concentration\":5E17,\n        \"resistivity\": 0.32,\n        \"mobility\": 20000,\n        \"date_time\":\"2000-01-01 00:00:00\",\n        \"noties\":\"noty\",\n        \"series_id\":3\n    },\n    {\n        \"id\":2,\n        \"name\":\"name-8\",\n        \"current\":0.01,\n        \"resistance\":50,\n        \"sqr_resistance\":30,\n        \"offset\":0.2,\n        \"hall_voltage\":0.3,\n        \"sensitive_i\": 12,\n        \"sensitive_v\":8,\n        \"concentration\":5E17,\n        \"resistivity\": 0.32,\n        \"mobility\": 20000,\n        \"date_time\":\"2000-01-01 00:00:00\",\n        \"noties\":\"noty\",\n        \"series_id\":3\n    }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>Information about edit Sensors data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"Changes have been saved\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "answer",
+            "description": "<p>No changes applied.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"The selected samples.0.id is invalid.\",\n         \"The samples.1.current must be a number.\"\n     ],\n     \"answer\": \"No changes applied\"\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Samples"
+  },
+  {
+    "type": "get",
+    "url": "/getsamples?page={page}",
+    "title": "Get Samples",
+    "name": "Get_Samples",
+    "group": "Samples",
+    "permission": [
+      {
+        "name": "All Authorised"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>Page number for paginate For first page can be '/getsamples'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>Current user token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "materials_id",
+            "description": "<p>Materials unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "manufacturers_id",
+            "description": "<p>Manufacturers unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Array",
+            "optional": false,
+            "field": "series_id",
+            "description": "<p>Series unique ID.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "DateTime",
+            "description": "<p>Sample measure time.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "findvalue",
+            "description": "<p>Find text by Name or Note.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "itemCount",
+            "description": "<p>Find text by Name or Note.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "order_by",
+            "description": "<p>Order samples by: 'Name', 'R', 'SI', 'n', 'ρ', 'μ', 'DateTime'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "order",
+            "description": "<p>Order samples direct or inverce: 'asc', 'desc'.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"materials_id\":[3,2],\n    \"manufacturers_id\":[1,2],\n    \"series_id\":[1,2],\n    \"DateTime\":\"2019-05-12 15:45:00\",\n    \"findvalue\":\"some note\",\n    \"itemCount\":5,\n    \"order_by\":\"name\",\n    \"order\":\"asc\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>null.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "samples",
+            "description": "<p>All samples with paginate and paginate data.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "data",
+            "description": "<p>All samples data.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "current_page",
+            "description": "<p>Current paginate page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "first_page_url",
+            "description": "<p>First page URL.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "from",
+            "description": "<p>From paginate page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "last_page",
+            "description": "<p>Last paginate page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "last_page_url",
+            "description": "<p>Last page URL.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "next_page_url",
+            "description": "<p>Last page URL.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "path",
+            "description": "<p>Main path page URL.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "per_page",
+            "description": "<p>Samples per page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "prev_page_url",
+            "description": "<p>Previous page URL.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "to",
+            "description": "<p>To paginate page.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "total",
+            "description": "<p>Total Samples count.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"err\": null,\n    \"samples\": {\n        \"current_page\": 1,\n        \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"name-2\",\n            \"current\": 10400.000000000004,\n            \"resistance\": 50.4,\n            \"sqr_resistance\": 30.4,\n            \"offset\": 2400,\n            \"hall_voltage\": 3400,\n            \"sensitive_i\": 12.4,\n            \"sensitive_v\": 8.4,\n            \"concentration\": 540000000000000000,\n            \"resistivity\": 0.324,\n            \"mobility\": 20000.4,\n            \"date_time\": \"2000-01-01 00:00:00\",\n            \"noties\": \"noty\",\n            \"series_id\": 2,\n            \"iunits\": \"mkA\",\n            \"vunits\": \"mkV\",\n            \"series_name\": \"series-2\",\n            \"material_name\": \"InAs\",\n            \"manufacturer_name\": \"ACHEN\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"name-4\",\n            \"current\": 10,\n            \"resistance\": 50,\n            \"sqr_resistance\": 30,\n            \"offset\": 199.99999999999991,\n            \"hall_voltage\": 300,\n            \"sensitive_i\": 12,\n            \"sensitive_v\": 8,\n            \"concentration\": 500000000000000000,\n            \"resistivity\": 0.32,\n            \"mobility\": 20000,\n            \"date_time\": \"2000-01-01 00:00:00\",\n            \"noties\": \"noty\",\n            \"series_id\": 2,\n            \"iunits\": \"mkA\",\n            \"vunits\": \"mkV\",\n            \"series_name\": \"series-2\",\n            \"material_name\": \"InAs\",\n            \"manufacturer_name\": \"ACHEN\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"name-6\",\n            \"current\": 10,\n            \"resistance\": 50,\n            \"sqr_resistance\": 30,\n            \"offset\": 200,\n            \"hall_voltage\": 300,\n            \"sensitive_i\": 12,\n            \"sensitive_v\": 8,\n            \"concentration\": 500000000000000000,\n            \"resistivity\": 0.32,\n            \"mobility\": 20000,\n            \"date_time\": \"2000-01-01 00:00:00\",\n            \"noties\": \"noty\",\n            \"series_id\": 2,\n            \"iunits\": \"mkA\",\n            \"vunits\": \"mkV\",\n            \"series_name\": \"series-2\",\n            \"material_name\": \"InAs\",\n            \"manufacturer_name\": \"ACHEN\"\n        }\n        ],\n        \"first_page_url\": \"http://sensordb.loc/api/getsamples?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://sensordb.loc/api/getsamples?page=1\",\n        \"next_page_url\": null,\n        \"path\": \"http://sensordb.loc/api/getsamples\",\n        \"per_page\": 5,\n        \"prev_page_url\": null,\n        \"to\": 3,\n        \"total\": 3\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Array",
+            "optional": false,
+            "field": "err",
+            "description": "<p>Server errors array</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "{\n     \"err\": [\n         \"No Permission\"\n     ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/api.php",
+    "groupTitle": "Samples"
+  },
+  {
+    "type": "post",
     "url": "/addseries",
     "title": "Add Serie",
     "name": "Add_Serie",
@@ -1442,7 +2389,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1\n}",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
           "type": "json"
         }
       ]
@@ -1695,7 +2642,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1\n}",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
           "type": "json"
         }
       ]
@@ -1810,7 +2757,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"err\": null,\n    \"serie\":\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1\n         }\n}",
+          "content": "{\n    \"err\": null,\n    \"serie\":\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1,\n             \"materials_id\": 1\n         }\n}",
           "type": "json"
         }
       ]
@@ -1891,7 +2838,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"err\": null,\n    \"series\": [\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1\n         },\n         {\n             \"id\": 2,\n             \"name\": \"series-2\",\n             \"structure\": \"layer-2/substrate\",\n             \"thickness\": 100,\n             \"image\": \"image-2\",\n             \"current\": 50,\n             \"resistance\": 3,\n             \"sensitivity\": 0.001,\n             \"offset\": 300,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 2\n         }\n     ]\n}",
+          "content": "{\n    \"err\": null,\n    \"series\": [\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1,\n             \"materials_id\": 1\n         },\n         {\n             \"id\": 2,\n             \"name\": \"series-2\",\n             \"structure\": \"layer-2/substrate\",\n             \"thickness\": 100,\n             \"image\": \"image-2\",\n             \"current\": 50,\n             \"resistance\": 3,\n             \"sensitivity\": 0.001,\n             \"offset\": 300,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 2,\n             \"materials_id\": 1\n         }\n     ]\n}",
           "type": "json"
         }
       ]
