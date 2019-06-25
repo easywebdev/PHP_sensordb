@@ -6,11 +6,27 @@
 
 @section('content')
 
-    <div class="container">
-        Manufactures
+<div class="container">
+    <h2 class="h2">Manufacturers</h2>
+
+    <div class="line-block bg-color-blue">
+        <a class="btn" href="javascript:addManufacturersForm()">Add</a>
     </div>
 
-    <script src="{{asset('js/manufactures/manufactures.js')}}"></script>
+    <div id="manufacturers" class="line-block table-container">
+
+    </div>
+
+    <div class="line-block bg-color-blue">
+        <a class="btn" href="javascript:addManufacturersForm()">Add</a>
+    </div>
+</div>
+
+<div id="adddialog" class="dialog" title="Add Manufacturer"></div>
+<div id="editdialog" class="dialog" title="Edit Manufacturer"></div>
+<div id="deldialog" class="dialog" title="Del Manufacturer"></div>
+
+<script src="{{asset('js/manufactures/manufactures.js')}}"></script>
 
 @endsection
 

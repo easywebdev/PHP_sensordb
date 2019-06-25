@@ -8,23 +8,19 @@
 
 .s-header {
     margin-bottom: 20px;
-    background-color: #64d5ca;
 }
 
 .s-main {
     margin-bottom: 20px;
-    background-color: #64d5ca;
 }
 
 .s-footer {
     margin-bottom: 20px;
-    background-color: #64d5ca;
 }
 
 .container {
     max-width: 1024px;
     margin: 0 auto;
-    background-color: grey;
 }
 
 /**/
@@ -32,16 +28,29 @@
 /*=== Common ===*/
 body {
     font-family: Verdana;
+    font-size: 14px;
+    background: linear-gradient(45deg, #EECFBA, #C5DDE8);
 }
 
 .h1 {
     font-size: 48px;
+    color: rgb(0, 113, 179);
 }
 .h2 {
     font-size: 16px;
     font-weight: 800;
-    margin-bottom: 10px;
-    background-color: green;
+    margin-bottom: 0px;
+    padding: 5px 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(82, 92, 102);
+}
+
+.mr10 {
+    margin-right: 10px;
+}
+
+.bg-color-blue {
+    background-color: rgb(0, 113, 179);
 }
 
 .table-container {
@@ -60,29 +69,92 @@ body {
     display: none;
 }
 
-.btn {
-    cursor: pointer;
+.btn, .btn:hover, .btn:focus, .btn:active, .btn:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }
+
+    .btn:hover {
+        color: rgb(0, 0, 0);
+    }
+
+.btn {
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: rgb(82, 92, 102);
+}
+
+    .btn--blue {
+        background-color: rgb(0, 113, 179);
+    }
 
 .buttons-container {
     margin-bottom: 10px;
     background-color: green;
 }
 
+.label {
+    margin-right: 5px;
+}
+
 .line-block {
     display:  flex;
     align-content: center;
-    padding: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
     margin-bottom: 10px;
-    background-color: #1d68a7;
 }
+
+    .line-block--wrap {
+        flex-wrap: wrap;
+    }
+
+    .line-block--justify {
+        justify-content: space-between;
+    }
+
+.line-block__item {
+    margin-right: 10px;
+}
+
+    .line-block__item:last-child {
+        margin-right: 0;
+    }
+
+.data-form {
+    display: flex;
+    flex-direction: column;
+    align-items: self-end;
+}
+
+    .data-form__item {
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+
+        .data-form__item input {
+            padding: 5px 1px;
+            border-radius: 3px;
+            border: solid 0px black;
+            background-color: rgb(82, 92, 102);
+            color: rgb(255, 255, 255);
+        }
+
+    .data-form__label {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
 /**/
 
 /*=== Authorization ===*/
 .authorization {
     padding: 20px;
     border-radius: 20px;
-    background-color: grey;
+    background-color: rgb(82, 92, 102);
+    color: rgb(255, 255, 255);
 }
 
 .auth-form {
@@ -98,7 +170,7 @@ body {
 
     .auth-form__label {
         display: inline-block;
-        width: 80px;
+        width: 100px;
     }
 
     .auth-form__item input {
@@ -111,15 +183,16 @@ body {
 /*=== Header ===*/
 .header-top {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
 }
 
     .header-top__item {
         margin-right: 10px;
-        background-color: green;
     }
         .header-top__item:last-child {
             margin-right: 0px;
@@ -136,7 +209,55 @@ body {
 
 .header-manage {
     width: 200px;
+    color: rgb(0, 113, 179);
 }
+
+    .header-manage__text {
+        font-size: 18px;
+    }
+
+.user-icon {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgb(0, 113, 179);
+}
+
+.user-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: -65px;
+    padding: 5px;
+    list-style: none;
+    border-bottom-left-radius: 5px;
+    background: rgb(255, 255, 255);
+}
+
+    .user-menu__item {
+        margin-bottom: 5px;
+    }
+
+    .user-menu__item:last-child {
+        margin-bottom: 0;
+    }
+
+        .user-menu-link, .user-menu-link:hover, .user-menu-link:focus, .user-menu-link:active, .user-menu-link:visited {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+
+        .user-menu-link {
+            display: block;
+            padding: 5px 10px;
+            background: rgb(0, 113, 179);
+        }
+
+        .user-menu-link:hover, .user-menu-link:focus, .user-menu-link:active {
+            color: rgb(0, 0, 0);
+        }
 /**/
 
 /* === Navigation ===*/
@@ -146,16 +267,79 @@ body {
     justify-content: left;
     align-items: center;
     box-sizing: border-box;
+    padding: 0px 10px;
+    background: rgb(0, 113, 179);
+}
+
+.nav__item, .nav__item:hover, .nav__item:focus, .nav__item:active, .nav__item:visited {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
 }
 
 .nav__item {
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin-right: 20px;
-    background-color: white;
+    font-size: 18px;
+    text-align: center;
 }
 
     .nav__item:last-child {
         margin-right: 0px;
+    }
+
+    .nav__item:hover {
+        color: rgb(0, 0, 0);
+    }
+
+.hidden {
+    display: none;
+}
+/**/
+
+/* HOME */
+.filters {
+    background-color: rgb(0, 113, 179);
+}
+
+.filters__item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+}
+
+    .filters__item:last-child {
+        margin-bottom: 0;
+    }
+
+    .filters__item select {
+        border: solid 0px red;
+        background-color: rgb(82, 92, 102);
+        color: rgb(255, 255, 255);
+    }
+
+    .filters__item select option {
+        background-color: rgb(82, 92, 102);
+    }
+
+    .filters__item select option[selected] {
+        background-color: red;
+    }
+
+    .filters__item select option:active, .filters__item select option:hover {
+        background: red;
+    }
+
+
+.filter-select {
+    width: 150px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+    .filter-select:last-child {
+        margin-right: 0;
     }
 /**/
 
@@ -172,37 +356,96 @@ body {
 
 }
 
-.manage-buttons {
-
-}
-
-.pagination {
+.filters__item {
     display: flex;
-    margin-right: 20px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.pagination__item {
-    display: block;
-    padding: 5px;
-    margin-right: 5px;
-    background-color: black;
-    color: white;
+.input-container {
+    margin-right: 10px;
 }
-    .pagination__item--active {
-        background-color: red;
+
+    .input-container:last-child {
+        margin-right: 0;
     }
 
-.items-count {
-    margin-right: 10px;
+.filters__item input[type=text] {
+    border: solid 0px rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: rgb(82, 92, 102);
+    color: rgb(255, 255, 255);
 }
 
-.page-info {
-    margin-right: 10px;
+.page-settings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(0, 113, 179);
+    color: rgb(255, 255, 255);
 }
 
-.units {
-    margin-right: 10px;
+    .page-settings__item {
+        margin-right: 10px;
+    }
+
+    .page-settings__item:last-child {
+        margin-right: 0;
+    }
+
+    .page-settings select, .reverce {
+        border: solid 0px red;
+        background-color: rgb(82, 92, 102);
+        color: rgb(255, 255, 255);
+    }
+
+    .manage-buttons {
+
+    }
+
+.page-inform {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgb(82, 92, 102);
+    color: rgb(255, 255, 255);
 }
+
+    .pagination {
+        display: flex;
+        margin-right: 20px;
+}
+
+    .pagination__item, .pagination__item:hover, .pagination__item:focus, .pagination__item:active, .pagination__item:visited {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+
+    .pagination__item {
+        display: block;
+        border-radius: 3px;
+        padding: 5px 10px;
+        margin-right: 5px;
+        background-color: rgb(0, 113, 179);
+        color: rgb(255, 255, 255);
+    }
+        .pagination__item--active, .pagination__item:hover {
+            color: rgb(0, 0, 0);
+        }
+
+    .items-count {
+        margin-right: 10px;
+    }
+
+    .page-info {
+        margin-right: 10px;
+    }
+
+    .units {
+     margin-right: 10px;
+    }
 
     .units__item {
         margin-right: 5px;
@@ -210,4 +453,16 @@ body {
         .units__item:last-child {
             margin-right: 0px;
         }
+
+.table-container {
+    background-color: rgb(255, 255, 255);
+}
+/**/
+
+/*=== Adaptive ===*/
+@media screen and (max-width: 1000px) {
+    .hidden {
+        display: block;
+    }
+}
 /**/

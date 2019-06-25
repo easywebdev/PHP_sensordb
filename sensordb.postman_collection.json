@@ -416,7 +416,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\":\"MEFE\",\n\t\"person\":\"BBB\"\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"MEFE\",\n\t\"person\":\"AAA\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/editmanufacturers/10",
@@ -552,7 +552,7 @@
 							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/getseries/1",
+							"raw": "http://sensordb.loc/api/getseries/2",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -561,7 +561,7 @@
 							"path": [
 								"api",
 								"getseries",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -611,7 +611,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\": \"series-5\",\n    \"structure\": \"layer-3/substrate\",\n    \"thickness\": 1000,\n    \"image\": \"image-3\",\n    \"current\": 10,\n    \"resistance\": 50,\n    \"sensitivity\": 35,\n    \"offset\": 1,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mV\",\n    \"iunits\": \"mkA\",\n    \"manufacturers_id\": 3\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\": \"series-3\",\n    \"structure\": \"layer-3/substrate\",\n    \"thickness\": 1000,\n    \"image\": \"image-3\",\n    \"current\": 10,\n    \"resistance\": 50,\n    \"sensitivity\": 35,\n    \"offset\": 1,\n    \"material_type\": \"3D\",\n    \"vunits\": \"V\",\n    \"iunits\": \"A\",\n    \"manufacturers_id\": 3,\n    \"materials_id\": 3\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/addseries",
@@ -775,7 +775,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"Graphen\"\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\":\"Au\"\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/addmaterials",
@@ -841,7 +841,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"name\":\"name-1\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"materials_id\":1,\n\t\t\t\"manufacturers_id\":1,\n\t\t\t\"series_id\":1\n\t\t},\n\t\t{\n\t\t\t\"name\":\"name-2\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"materials_id\":2,\n\t\t\t\"manufacturers_id\":2,\n\t\t\t\"series_id\":2\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"iunits\":\"mA\",\n\t\"vunits\":\"mV\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"name\":\"name-9\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"series_id\":3\n\t\t},\n\t\t{\n\t\t\t\"name\":\"name-10\",\n\t\t\t\"current\":0.01,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":0.2,\n\t\t\t\"hall_voltage\":0.3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"series_id\":3\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/addsamples",
@@ -910,7 +910,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"vunits\":\"mV\",\n\t\"iunits\":\"mA\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"id\":\"1\",\n\t\t\t\"name\":\"name-1\",\n\t\t\t\"current\":10.5,\n\t\t\t\"resistance\":50.5,\n\t\t\t\"sqr_resistance\":30.5,\n\t\t\t\"offset\":2.5,\n\t\t\t\"hall_voltage\":3.5,\n\t\t\t\"sensitive_i\": 12.5,\n\t\t\t\"sensitive_v\":8.5,\n\t\t\t\"concentration\":5.5E17,\n\t\t\t\"resistivity\": 0.322,\n\t\t\t\"mobility\": 20000.5,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"materials_id\":1,\n\t\t\t\"manufacturers_id\":1,\n\t\t\t\"series_id\":1\n\t\t},\n\t\t{\n\t\t\t\"id\":\"2\",\n\t\t\t\"name\":\"name-2\",\n\t\t\t\"current\":10.4,\n\t\t\t\"resistance\":50.4,\n\t\t\t\"sqr_resistance\":30.4,\n\t\t\t\"offset\":2.4,\n\t\t\t\"hall_voltage\":3.4,\n\t\t\t\"sensitive_i\": 12.4,\n\t\t\t\"sensitive_v\":8.4,\n\t\t\t\"concentration\":5.4E17,\n\t\t\t\"resistivity\": 0.324,\n\t\t\t\"mobility\": 20000.4,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"materials_id\":2,\n\t\t\t\"manufacturers_id\":2,\n\t\t\t\"series_id\":2\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"vunits\":\"mV\",\n\t\"iunits\":\"mA\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"id\":\"1\",\n\t\t\t\"name\":\"name-1\",\n\t\t\t\"current\":10.5,\n\t\t\t\"resistance\":50.5,\n\t\t\t\"sqr_resistance\":30.5,\n\t\t\t\"offset\":2.5,\n\t\t\t\"hall_voltage\":3.5,\n\t\t\t\"sensitive_i\": 12.5,\n\t\t\t\"sensitive_v\":8.5,\n\t\t\t\"concentration\":5.5E17,\n\t\t\t\"resistivity\": 0.322,\n\t\t\t\"mobility\": 20000.5,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"series_id\":1\n\t\t},\n\t\t{\n\t\t\t\"id\":\"2\",\n\t\t\t\"name\":\"name-2\",\n\t\t\t\"current\":10.4,\n\t\t\t\"resistance\":50.4,\n\t\t\t\"sqr_resistance\":30.4,\n\t\t\t\"offset\":2.4,\n\t\t\t\"hall_voltage\":3.4,\n\t\t\t\"sensitive_i\": 12.4,\n\t\t\t\"sensitive_v\":8.4,\n\t\t\t\"concentration\":5.4E17,\n\t\t\t\"resistivity\": 0.324,\n\t\t\t\"mobility\": 20000.4,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"series_id\":2\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/editsamples",
@@ -940,7 +940,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"id\":[49, 50]\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"id\":[11, 12]\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/delsamples",
@@ -952,6 +952,84 @@
 							"path": [
 								"api",
 								"delsamples"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "files",
+			"item": [
+				{
+					"name": "http://sensordb.loc/api/addfile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/addfile",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"addfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://sensordb.loc/api/delfile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"filename\":\"uploads/general-purpose_application.png\"\n}"
+						},
+						"url": {
+							"raw": "http://sensordb.loc/api/delfile",
+							"protocol": "http",
+							"host": [
+								"sensordb",
+								"loc"
+							],
+							"path": [
+								"api",
+								"delfile"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
 							]
 						}
 					},

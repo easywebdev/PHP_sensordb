@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/site.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.datetimepicker.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome.css')}}">
 
     <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
     <script src="{{asset('js/jquery-ui.js')}}"></script>

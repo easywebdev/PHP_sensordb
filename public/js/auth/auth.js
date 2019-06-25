@@ -9,7 +9,8 @@ $(document).ready(function(){
 
 
 function authData(formID) {
-    var data = $(formID).serializeArray().reduce(function(a, x) { a[x.name] = x.value; return a; }, {});
+    var data = $('#' + formID).serializeArray().reduce(function(a, x) { a[x.name] = x.value; return a; }, {});
+    console.log(data);
 
     $.ajax({
         url: baseURL + '/login',
@@ -27,3 +28,11 @@ function authData(formID) {
         }
     });
 }
+
+// 'Enter' Key press reaction
+$(document).on('keypress',function(e) {
+    if(e.which == 13) {
+        authData('authorization');
+        //alert('Enter');
+    }
+});

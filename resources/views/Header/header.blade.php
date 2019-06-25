@@ -8,18 +8,23 @@
     </div>
 
     <div class="header-top__item header-manage">
-        <div id="username" class="">User:</div>
-        <div id="userrole" class="">Role:</div>
-        <div>
-            <a class="btn" href="javascript:resetUserPasswordForm()">Change password</a>
-        </div>
-        <div>
-            <a class="btn" href="javascript:logOut('token')">Sign Out</a>
-        </div>
+        <div id="username" class="header-manage__text">User:</div>
+        <div id="userrole" class="header-manage__text">Role:</div>
     </div>
+
+    <div class="user-icon toggle">
+        <i class="fas fa-user-cog"></i>
+    </div>
+
+    <ul class="user-menu">
+        <li class="user-menu__item"><a class="user-menu-link" href="javascript:resetUserPasswordForm()">Change password</a></li>
+        <li class="user-menu__item"><a class="user-menu-link" href="javascript:logOut('token')">Sign Out</a></li>
+    </ul>
 </div>
 
-<nav class="nav container"></nav>
+<nav class="nav container">
+    <a href="#" class="nav__item hidden"><div class="fas fa-align-justify"></div></a>
+</nav>
 
 <div id="resetpassword" class="dialog" title="Reset Password"></div>
 

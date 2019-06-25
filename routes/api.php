@@ -569,6 +569,7 @@ Route::middleware(['rootadmin'])->group(function () {
  *               "sensitivity": 25,
  *               "offset": 3,
  *               "material_type": "3D",
+ *               "iunits": "mA",
  *               "vunits": "mkV",
  *               "manufacturers_id": 1,
  *               "materials_id": 1
@@ -584,6 +585,7 @@ Route::middleware(['rootadmin'])->group(function () {
  *               "sensitivity": 0.001,
  *               "offset": 300,
  *               "material_type": "3D",
+ *               "iunits": "mkA",
  *               "vunits": "mkV",
  *               "manufacturers_id": 2,
  *               "materials_id": 1
@@ -632,6 +634,7 @@ Route::middleware(['rootadmin'])->group(function () {
      *               "sensitivity": 25,
      *               "offset": 3,
      *               "material_type": "3D",
+     *               "iunits": "mA",
      *               "vunits": "mkV",
      *               "manufacturers_id": 1,
      *               "materials_id": 1
@@ -666,6 +669,7 @@ Route::middleware(['rootadmin'])->group(function () {
      * @apiParam {Double} sencitivity Typical sencitivity for samples in this serie.
      * @apiParam {Double} offset Typical offset for samples in this serie.
      * @apiParam {Enum} material_type Type of sensitive layer may be "2D" or "3D".
+     * @apiParam {Enum} iunits Voltage units for this serie. May be "A", "mA", "mkA", "nA".
      * @apiParam {Enum} vunits Voltage units for this serie. May be "V", "mV", "mkV", "nV"
      * @apiParam {Number} manufacturers_id Manufacturer id for this serie.
      * @apiParamExample {json} Request-Example:
@@ -680,6 +684,7 @@ Route::middleware(['rootadmin'])->group(function () {
      *      "sensitivity": 25,
      *      "offset": 3,
      *      "material_type": "3D",
+     *      "iunits": "mA",
      *      "vunits": "mkV",
      *      "manufacturers_id": 1,
      *      "materials_id": 1
@@ -721,7 +726,8 @@ Route::middleware(['rootadmin'])->group(function () {
      * @apiParam {Double} sencitivity Typical sencitivity for samples in this serie.
      * @apiParam {Double} offset Typical offset for samples in this serie.
      * @apiParam {Enum} material_type Type of sensitive layer may be "2D" or "3D".
-     * @apiParam {Enum} vunits Voltage units for this serie. May be "V", "mV", "mkV", "nV"
+     * @apiParam {Enum} iunits Voltage units for this serie. May be "A", "mA", "mkA", "nA".
+     * @apiParam {Enum} vunits Voltage units for this serie. May be "V", "mV", "mkV", "nV".
      * @apiParam {Number} manufacturers_id Manufacturer id for this serie.
      * @apiParamExample {json} Request-Example:
      *  {
@@ -735,6 +741,7 @@ Route::middleware(['rootadmin'])->group(function () {
      *      "sensitivity": 25,
      *      "offset": 3,
      *      "material_type": "3D",
+     *      "iunits": "mA",
      *      "vunits": "mkV",
      *      "manufacturers_id": 1,
      *      "materials_id": 1
@@ -761,7 +768,7 @@ Route::middleware(['rootadmin'])->group(function () {
     Route::post('addseries', 'Series\SeriesController@addSerie');
 
     /**
-     * @api {post} /delseries/{id} Delete Serie
+     * @api {delete} /delseries/{id} Delete Serie
      * @apiName Del Serie
      * @apiGroup Series
      * @apiPermission root, admin

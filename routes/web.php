@@ -27,6 +27,10 @@ Route::get('manufactures', function () {
     return view('Manufactures/manufactures');
 });
 
+Route::get('series', function () {
+    return view('Series/series');
+});
+
 Route::get('users', function () {
     return view('Users/users');
 });

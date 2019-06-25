@@ -29,6 +29,7 @@ $(document).ready(function()
     // Dialogs
     createConfirmDialog('#deldialog', 'auto', delData);
     createDialogue('#adddialog', 'auto', addData);
+    createDialogue('#editdialog', 'auto', addData);
 });
 
 // Change Current units
@@ -104,12 +105,20 @@ function buildPage(pageLink) {
                     let i = answer.samples.from;
 
                     $('.filters').html(
-                        'Select Serie: ' + filterSelectBuilder('series', seriesList, selectedSerie) +
-                        'Select Material: ' + filterSelectBuilder('materials', materialsList, selectedMaterial) +
-                        'Select Manufacturer' + filterSelectBuilder('manufacturers', manufacturersList, selectedManufacturer) +
-                        'DateTime: <input type="text" id="datetimepicker" value="' + DateTime + '"/>' +
-                        'Find (by Name or Note): <input type="text" id="note" value="' + findValue + '"/>' +
-                        '<a href="javascript:applyFilters()" class="btn">Apply</a><a href="javascript:clearsFilters()" class="btn">Clear</a>'
+                        '<div class="line-block__item">' +
+                        '<div class="filters__item">' +
+                        '<div class="input-container"><label class="label" for="series">Select Serie:</label>' + filterSelectBuilder('series', seriesList, selectedSerie) + '</div>' +
+                        '<div class="input-container"><label class="label" for="materials">Select Material:</label>' + filterSelectBuilder('materials', materialsList, selectedMaterial) + '</div>' +
+                        '<div class="input-container"><label class="label" for="manufacturers">Select Manufacturer:</label>' + filterSelectBuilder('manufacturers', manufacturersList, selectedManufacturer) + '</div>' +
+                        '</div>' +
+                        '<div class="filters__item">' +
+                        '<div class="input-container"><label class="label" for="datetimepicker">DateTime:</label><input type="text" id="datetimepicker" value="' + DateTime + '"/>' + '</div>' +
+                        '<div class="input-container"><label class="label" for="note">Find (by Name or Note):</label><input type="text" id="note" value="' + findValue + '"/>' + '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="line-block__item">' +
+                        '<a href="javascript:applyFilters()" class="btn mr10">Apply</a><a href="javascript:clearsFilters()" class="btn">Clear</a>' +
+                        '</div>'
                     );
                     $('#datetimepicker').datetimepicker({
                         format:'Y-m-d H:i:s'
@@ -197,8 +206,8 @@ function buildPage(pageLink) {
                     // build manage buttons
                     if(readCookie('role') == 'root' || readCookie('role') == 'admin') {
                         $('.manage-buttons').html(
-                            '<a class="btn" href="javascript:saveData(\'edit\')">Save</a>' +
-                            '<a class="btn" href="javascript:addSamplesForm()">Add</a>' +
+                            '<a class="btn mr10" href="javascript:saveData(\'edit\')">Save</a>' +
+                            '<a class="btn mr10" href="javascript:addSamplesForm()">Add</a>' +
                             '<a class="btn" href="javascript:delSamplesForm()">Delete</a>'
                         );
                     }
@@ -502,7 +511,7 @@ function recalculateByUnits(data)
 
 function filterSelectBuilder(selectID, selectList, selectedItem)
 {
-    let renderString = '<select id="' + selectID + '" multiple>';
+    let renderString = '<select class="filter-select" id="' + selectID + '" multiple>';
 
     selectList.set('', 'All');
 

@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="auth-form__item">
-                    <a href="javascript:authData(authorization)">Sign In</a>
+                    <a class="btn btn--blue" href="javascript:authData('authorization')">Sign In</a>
                 </div>
             </form>
         </div>

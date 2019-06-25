@@ -49,17 +49,14 @@ $(document).ready(function()
 
 function buildNav(role)
 {
-    $('.nav').append('<a href="http://' + location.host + '" class="nav__item">Home</a>');
-    if(role == 'admin' || role == 'root') {
-        $('.nav').append('<a href="/materials" class="nav__item">Materials</a>');
-        $('.nav').append('<a href="/manufactures" class="nav__item">Manufacturers</a>');
-    }
+    $('.nav').append('<a href="http://' + location.host + '" class="nav__item"><div class="fas fa-home"></div><div>Home</div></a>');
+    $('.nav').append('<a href="/materials" class="nav__item"><div class="fas fa-layer-group"></div><div>Materials</div></a>');
+    $('.nav').append('<a href="/manufactures" class="nav__item"><div class="fas fa-landmark"></div><div>Manufacturers</div></a>');
+    $('.nav').append('<a href="/series" class="nav__item"><div class="fas fa-object-ungroup"></div><div>Series</div></a>');
 
     if(role == 'root') {
-        $('.nav').append('<a href="/users" class="nav__item">Users</a>');
+        $('.nav').append('<a href="/users" class="nav__item"><div class="fas fa-user-friends"></div><div>Users</div></a>');
     }
-
-    $('.nav').append('<a href="#" class="nav__item hidden">icon</a>');
 }
 
 function logOut(token)
@@ -116,3 +113,11 @@ function resetUserPassword()
         window.location.href = '/authorization';
     }
 }
+
+/* Visualization effects functions */
+$(function() {
+    $('.toggle').on('click', function() {
+        $('.user-menu').slideToggle();
+    })
+});
+/**/

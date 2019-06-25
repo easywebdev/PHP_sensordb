@@ -2374,8 +2374,15 @@
             "group": "Parameter",
             "type": "Enum",
             "optional": false,
+            "field": "iunits",
+            "description": "<p>Voltage units for this serie. May be &quot;A&quot;, &quot;mA&quot;, &quot;mkA&quot;, &quot;nA&quot;.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Enum",
+            "optional": false,
             "field": "vunits",
-            "description": "<p>Voltage units for this serie. May be &quot;V&quot;, &quot;mV&quot;, &quot;mkV&quot;, &quot;nV&quot;</p>"
+            "description": "<p>Voltage units for this serie. May be &quot;V&quot;, &quot;mV&quot;, &quot;mkV&quot;, &quot;nV&quot;.</p>"
           },
           {
             "group": "Parameter",
@@ -2389,7 +2396,7 @@
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"iunits\": \"mA\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
           "type": "json"
         }
       ]
@@ -2445,7 +2452,7 @@
     "groupTitle": "Series"
   },
   {
-    "type": "post",
+    "type": "delete",
     "url": "/delseries/{id}",
     "title": "Delete Serie",
     "name": "Del_Serie",
@@ -2627,6 +2634,13 @@
             "group": "Parameter",
             "type": "Enum",
             "optional": false,
+            "field": "iunits",
+            "description": "<p>Voltage units for this serie. May be &quot;A&quot;, &quot;mA&quot;, &quot;mkA&quot;, &quot;nA&quot;.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Enum",
+            "optional": false,
             "field": "vunits",
             "description": "<p>Voltage units for this serie. May be &quot;V&quot;, &quot;mV&quot;, &quot;mkV&quot;, &quot;nV&quot;</p>"
           },
@@ -2642,7 +2656,7 @@
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"iunits\": \"mA\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
           "type": "json"
         }
       ]
@@ -2757,7 +2771,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"err\": null,\n    \"serie\":\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1,\n             \"materials_id\": 1\n         }\n}",
+          "content": "{\n    \"err\": null,\n    \"serie\":\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"iunits\": \"mA\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1,\n             \"materials_id\": 1\n         }\n}",
           "type": "json"
         }
       ]
@@ -2838,7 +2852,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"err\": null,\n    \"series\": [\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1,\n             \"materials_id\": 1\n         },\n         {\n             \"id\": 2,\n             \"name\": \"series-2\",\n             \"structure\": \"layer-2/substrate\",\n             \"thickness\": 100,\n             \"image\": \"image-2\",\n             \"current\": 50,\n             \"resistance\": 3,\n             \"sensitivity\": 0.001,\n             \"offset\": 300,\n             \"material_type\": \"3D\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 2,\n             \"materials_id\": 1\n         }\n     ]\n}",
+          "content": "{\n    \"err\": null,\n    \"series\": [\n         {\n             \"id\": 1,\n             \"name\": \"series-1\",\n             \"structure\": \"layer-1/substrate\",\n             \"thickness\": 1900,\n             \"image\": \"image-11\",\n             \"current\": 20,\n             \"resistance\": 150,\n             \"sensitivity\": 25,\n             \"offset\": 3,\n             \"material_type\": \"3D\",\n             \"iunits\": \"mA\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 1,\n             \"materials_id\": 1\n         },\n         {\n             \"id\": 2,\n             \"name\": \"series-2\",\n             \"structure\": \"layer-2/substrate\",\n             \"thickness\": 100,\n             \"image\": \"image-2\",\n             \"current\": 50,\n             \"resistance\": 3,\n             \"sensitivity\": 0.001,\n             \"offset\": 300,\n             \"material_type\": \"3D\",\n             \"iunits\": \"mkA\",\n             \"vunits\": \"mkV\",\n             \"manufacturers_id\": 2,\n             \"materials_id\": 1\n         }\n     ]\n}",
           "type": "json"
         }
       ]
