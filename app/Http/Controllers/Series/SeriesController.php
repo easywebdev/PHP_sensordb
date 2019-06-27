@@ -67,6 +67,7 @@ class SeriesController extends Controller
         $validateRules = [
             'name' => 'required|unique:series,name,' . $request->route('id'),
             'material_type' => 'in:3D,2D',
+            'image' => 'required',
             'vunits' => 'in:V,mV,mkV,nV',
             'iunits' => 'in:A,mA,mkA,nA',
             'manufacturers_id' => 'exists:manufacturers,id',
@@ -114,6 +115,7 @@ class SeriesController extends Controller
         $validateRules = [
             'name' => 'required|unique:series,name,',
             'material_type' => 'in:3D,2D',
+            'image' => 'required',
             'vunits' => 'in:V,mV,mkV,nV',
             'iunits' => 'in:A,mA,mkA,nA',
             'manufacturers_id' => 'exists:manufacturers,id',

@@ -611,7 +611,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\": \"series-3\",\n    \"structure\": \"layer-3/substrate\",\n    \"thickness\": 1000,\n    \"image\": \"image-3\",\n    \"current\": 10,\n    \"resistance\": 50,\n    \"sensitivity\": 35,\n    \"offset\": 1,\n    \"material_type\": \"3D\",\n    \"vunits\": \"V\",\n    \"iunits\": \"A\",\n    \"manufacturers_id\": 3,\n    \"materials_id\": 3\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\": \"series-4\",\n    \"structure\": \"layer-3/substrate\",\n    \"thickness\": 1000,\n    \"image\": \"uploads/noimage.png\",\n    \"current\": 10,\n    \"resistance\": 50,\n    \"sensitivity\": 35,\n    \"offset\": 1,\n    \"material_type\": \"3D\",\n    \"vunits\": \"V\",\n    \"iunits\": \"A\",\n    \"manufacturers_id\": 3,\n    \"materials_id\": 1\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/addseries",

@@ -135,7 +135,7 @@ body {
     }
 
         .data-form__item input {
-            padding: 5px 1px;
+            padding: 5px 10px;
             border-radius: 3px;
             border: solid 0px black;
             background-color: rgb(82, 92, 102);
@@ -456,6 +456,35 @@ body {
 
 .table-container {
     background-color: rgb(255, 255, 255);
+}
+/**/
+
+/*=== Series ===*/
+.greed {
+    display: flex;
+    background-color: #1d68a7;
+}
+
+    .greed__item {
+        margin-right: 10px;
+        background-color: #00dd1c;
+    }
+
+        .greed__item:last-child {
+            margin-right: 0px;
+        }
+
+.picture {
+    width: 200px;
+}
+
+.thumbinail-container {
+    width: 50px;
+    overflow: hidden;
+}
+
+.thombinail {
+    width: 50px;
 }
 /**/
 

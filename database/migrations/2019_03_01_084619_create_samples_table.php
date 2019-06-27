@@ -27,7 +27,7 @@ class CreateSamplesTable extends Migration
             $table->double('resistivity');
             $table->double('mobility');
             $table->timestamp('date_time')->nullable();
-            $table->string('noties');
+            $table->string('noties')->nullable();
             $table->integer('series_id')->unsigned();
 
             $table->foreign('series_id')->references('id')->on('series')

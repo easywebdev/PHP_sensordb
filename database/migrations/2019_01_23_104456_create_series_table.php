@@ -16,13 +16,13 @@ class CreateSeriesTable extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('structure');
-            $table->double('thickness');
+            $table->string('structure')->nullable();
+            $table->double('thickness')->nullable();
             $table->string('image');
-            $table->double('current');
-            $table->double('resistance');
-            $table->double('sensitivity');
-            $table->double('offset');
+            $table->double('current')->nullable();
+            $table->double('resistance')->nullable();
+            $table->double('sensitivity')->nullable();
+            $table->double('offset')->nullable();
             $table->enum('material_type', ['3D', '2D']);
             $table->enum('vunits', ['V', 'mV', 'mkV', 'nV']);
             $table->enum('iunits', ['A', 'mA', 'mkA', 'nA']);
