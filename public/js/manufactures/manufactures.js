@@ -16,6 +16,11 @@ function buildPage()
         data: {"userToken": TOKEN},
         success: function(answer) {
             if(!answer.err) {
+                // Build Buttons
+                if(readCookie('role') == 'root' || readCookie('role') == 'admin') {
+                    $('.buttons').html('<a class="btn" href="javascript:addManufacturersForm()">Add</a>');
+                }
+
                 // Build Table
                 if(readCookie('role') == 'root' || readCookie('role') == 'admin') {
                     $('#manufacturers').html(
@@ -48,7 +53,7 @@ function buildPage()
                     else {
                         $('#table-manufacturers').append(
                             '<tr>' +
-                            '<td>' + materialsNumber + '</td><td>' + value.name + '</td><td>\' + value.person + \'</td>' +
+                            '<td>' + (key + 1) + '</td><td>' + value.name + '</td><td>' + value.person + '</td>' +
                             '</tr>'
                         );
                     }
@@ -131,6 +136,7 @@ function delManufacturersForm(id)
             }
             else {
                 //alert(answer.err);
+                $('#deldialog').html('<div id="answer"></div>');
                 $('#answer').html(answer.err);
             }
         }

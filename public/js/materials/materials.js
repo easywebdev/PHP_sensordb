@@ -20,6 +20,11 @@ function buildPage() {
             if(!answer.err) {
                 //alert(JSON.stringify(answer));
 
+                // Build Buttons
+                if(readCookie('role') == 'root' || readCookie('role') == 'admin') {
+                    $('.buttons').html('<a class="btn" href="javascript:addMaterialsForm()">Add</a>');
+                }
+
                 // Build Table
                 if(readCookie('role') == 'root' || readCookie('role') == 'admin') {
                     $('#materials').html(

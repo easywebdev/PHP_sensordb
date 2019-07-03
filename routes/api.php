@@ -572,7 +572,9 @@ Route::middleware(['rootadmin'])->group(function () {
  *               "iunits": "mA",
  *               "vunits": "mkV",
  *               "manufacturers_id": 1,
- *               "materials_id": 1
+ *               "materials_id": 1,
+ *               "material_name": "InSb",
+ *               "manufacturer_name": "MEFE"
  *           },
  *           {
  *               "id": 2,
@@ -588,7 +590,9 @@ Route::middleware(['rootadmin'])->group(function () {
  *               "iunits": "mkA",
  *               "vunits": "mkV",
  *               "manufacturers_id": 2,
- *               "materials_id": 1
+ *               "materials_id": 1,
+ *               "material_name": "InAs",
+ *               "manufacturer_name": "ACHEN"
  *           }
  *       ]
  *  }

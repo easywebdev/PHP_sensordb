@@ -142,6 +142,15 @@ body {
             color: rgb(255, 255, 255);
         }
 
+        .data-form__item select {
+            width: 168px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: solid 0px black;
+            background-color: rgb(82, 92, 102);
+            color: rgb(255, 255, 255);
+        }
+
     .data-form__label {
         display: inline-block;
         margin-right: 10px;
@@ -462,12 +471,10 @@ body {
 /*=== Series ===*/
 .greed {
     display: flex;
-    background-color: #1d68a7;
 }
 
     .greed__item {
         margin-right: 10px;
-        background-color: #00dd1c;
     }
 
         .greed__item:last-child {

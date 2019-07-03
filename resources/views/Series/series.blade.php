@@ -9,17 +9,13 @@
     <div class="container">
         <h2 class="h2">Series</h2>
 
-        <div class="line-block bg-color-blue">
-            <a class="btn" href="javascript:addSeriesForm()">Add</a>
-        </div>
+        <div class="line-block bg-color-blue buttons"></div>
 
         <div id="series" class="line-block table-container">
 
         </div>
 
-        <div class="line-block bg-color-blue">
-            <a class="btn" href="javascript:addSeriesForm()">Add</a>
-        </div>
+        <div class="line-block bg-color-blue buttons"></div>
     </div>
 
     <div id="adddialog" class="dialog" title="Add Series"></div>

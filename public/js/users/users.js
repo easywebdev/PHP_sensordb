@@ -38,8 +38,8 @@ function buildUsersTable(number, userData)
                             '<td>' + number + '</td>' +
                             '<td>' + userData.name + '</td>' +
                             '<td>' + userData.role + '</td>' +
-                            '<td><a href="javascript:editUserForm('+ userData.id +')">EDIT</a></td>' +
-                            '<td><a href="javascript:delUserForm('+ userData.id +')">DEL</a></td>' +
+                            '<td><a class="btn" href="javascript:editUserForm('+ userData.id +')">EDIT</a></td>' +
+                            '<td><a class="btn" href="javascript:delUserForm('+ userData.id +')">DEL</a></td>' +
                         '</tr>');
 }
 
@@ -56,15 +56,14 @@ function editUserForm(id)
 
             if(!answer.err) {
                 $('#editdialog').html(
-                    '<form id="edituser" class="edit-form">' +
+                    '<form id="edituser" class="data-form">' +
                     '<input id="id" type="hidden" name="id" value="' + answer.user.id + '">' +
-                    '<input type="hidden" name="userToken" value="' + TOKEN + '">' +
-                    '<label class="auth-form__label" for="name">Login:</label><input type="text" name="name" value="' + answer.user.name + '">' +
-                    '<label class="auth-form__label" for="password">Password:</label><input type="text" name="password" value="">' +
-                    '<label class="auth-form__label" for="role">Role:</label><select name="role">' +
+                    '<div class="data-form__item"><label class="auth-form__label" for="name">Login:</label><input type="text" name="name" value="' + answer.user.name + '"></div>' +
+                    '<div class="data-form__item"><label class="auth-form__label" for="password">Password:</label><input type="password" name="password" value=""></div>' +
+                    '<div class="data-form__item"><label class="auth-form__label" for="role">Role:</label><select name="role">' +
                         '<option>user</option>' +
                         '<option>admin</option>' +
-                    '</select>' +
+                    '</select></div>' +
                     '</form>' +
                     '<div id="result" class="err"></div>'
                 );
@@ -88,14 +87,13 @@ function addUserForm()
     $( "#adddialog" ).dialog( "open" );
 
     $('#adddialog').html(
-        '<form id="adduser" class="edit-form">' +
-        '<input type="hidden" name="userToken" value="' + TOKEN + '">' +
-        '<label class="auth-form__label" for="name">Login:</label><input type="text" name="name" value="">' +
-        '<label class="auth-form__label" for="password">Password:</label><input type="text" name="password" value="">' +
-        '<label class="auth-form__label" for="role">Role:</label><select name="role">' +
+        '<form id="adduser" class="data-form">' +
+        '<div class="data-form__item"><label class="auth-form__label" for="name">Login:</label><input type="text" name="name" value=""></div>' +
+        '<div class="data-form__item"><label class="auth-form__label" for="password">Password:</label><input type="password" name="password" value=""></div>' +
+        '<div class="data-form__item"><label class="auth-form__label" for="role">Role:</label><select name="role">' +
         '<option selected>user</option>' +
         '<option>admin</option>' +
-        '</select>' +
+        '</select></div>' +
         '</form>' +
         '<div id="result" class="err"></div>'
     );
@@ -127,6 +125,7 @@ function delUserForm(id)
 function editUser()
 {
     var data = $('#edituser').serializeArray().reduce(function(a, x) { a[x.name] = x.value; return a; }, {});
+    data['userToken'] = TOKEN;
 
     $.ajax({
         url: baseURL + '/editusers/' + $('#edituser #id').val(),
@@ -148,6 +147,7 @@ function editUser()
 function addUser()
 {
     var data = $('#adduser').serializeArray().reduce(function(a, x) { a[x.name] = x.value; return a; }, {});
+    data['userToken'] = TOKEN;
 
     //alert(JSON.stringify(data));
 

@@ -552,7 +552,7 @@
 							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/getseries/2",
+							"raw": "http://sensordb.loc/api/getseries/4",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -561,7 +561,7 @@
 							"path": [
 								"api",
 								"getseries",
-								"2"
+								"4"
 							]
 						}
 					},
@@ -580,10 +580,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"8d680875a1f3b18ba7d537abb947af02\",\n\t\"name\": \"series-5\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"iunits\": \"mkA\",\n    \"manufacturers_id\": 1\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"name\": \"series-5\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": \"null\",\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"vunits\": \"mkV\",\n    \"iunits\": \"mkA\",\n    \"manufacturers_id\": 1\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/editseries/7",
+							"raw": "http://sensordb.loc/api/editseries/4",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -592,7 +592,7 @@
 							"path": [
 								"api",
 								"editseries",
-								"7"
+								"4"
 							]
 						}
 					},
@@ -716,7 +716,7 @@
 							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/getmaterials/11",
+							"raw": "http://sensordb.loc/api/getmaterials/1",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -725,7 +725,7 @@
 							"path": [
 								"api",
 								"getmaterials",
-								"11"
+								"1"
 							]
 						}
 					},
@@ -841,7 +841,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"iunits\":\"mA\",\n\t\"vunits\":\"mV\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"name\":\"name-9\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"series_id\":3\n\t\t},\n\t\t{\n\t\t\t\"name\":\"name-10\",\n\t\t\t\"current\":0.01,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":0.2,\n\t\t\t\"hall_voltage\":0.3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"noty\",\n\t\t\t\"series_id\":3\n\t\t}\n\t]\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"iunits\":\"mA\",\n\t\"vunits\":\"mV\",\n\t\"samples\":[\n\t\t{\n\t\t\t\"name\":\"name-12\",\n\t\t\t\"current\":10,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":2,\n\t\t\t\"hall_voltage\":3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"\",\n\t\t\t\"series_id\":3\n\t\t},\n\t\t{\n\t\t\t\"name\":\"name-13\",\n\t\t\t\"current\":0.01,\n\t\t\t\"resistance\":50,\n\t\t\t\"sqr_resistance\":30,\n\t\t\t\"offset\":0.2,\n\t\t\t\"hall_voltage\":0.3,\n\t\t\t\"sensitive_i\": 12,\n\t\t\t\"sensitive_v\":8,\n\t\t\t\"concentration\":5E17,\n\t\t\t\"resistivity\": 0.32,\n\t\t\t\"mobility\": 20000,\n\t\t\t\"date_time\":\"2000-01-01 00:00:00\",\n\t\t\t\"noties\":\"\",\n\t\t\t\"series_id\":3\n\t\t}\n\t]\n}"
 						},
 						"url": {
 							"raw": "http://sensordb.loc/api/addsamples",
@@ -874,10 +874,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"materials_id\":[1, 2],\n\t\"manufacturers_id\":[1, 2],\n\t\"series_id\":[1, 2],\n\t\"DateTime\":\"2019-02-05 12:00:00\",\n\t\"findvalue\":\"\",\n\t\"itemCount\":5,\n\t\"order_by\":\"name\",\n    \"order\":\"asc\"\n}"
+							"raw": "{\n\t\"userToken\":\"3fb024e46e221b100b3b948be1c5eb79\",\n\t\"materials_id\":[2,3],\n\t\"manufacturers_id\":[2,3],\n\t\"series_id\":[2],\n\t\"DateTime\":\"\",\n\t\"findvalue\":\"\",\n\t\"itemCount\":5,\n\t\"order_by\":\"name\",\n    \"order\":\"asc\"\n}"
 						},
 						"url": {
-							"raw": "http://sensordb.loc/api/getsamples?page=2",
+							"raw": "http://sensordb.loc/api/getsamples?page=1",
 							"protocol": "http",
 							"host": [
 								"sensordb",
@@ -890,7 +890,7 @@
 							"query": [
 								{
 									"key": "page",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						}
@@ -979,7 +979,12 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": []
+									"src": "/D:/Fedor/Dewelopments/WEB/images/noimage.png"
+								},
+								{
+									"key": "userToken",
+									"value": "3fb024e46e221b100b3b948be1c5eb79",
+									"type": "text"
 								}
 							]
 						},

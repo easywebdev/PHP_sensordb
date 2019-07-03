@@ -21,6 +21,13 @@ class SeriesController extends Controller
 
         $series = Series::all()->toArray();
 
+        // Add names
+        for($i = 0; $i < count($series); $i++) {
+            $serie = Series::find($series[$i]['id']);
+            $series[$i]['material_name'] = $serie->material['name'];
+            $series[$i]['manufacturer_name'] = $serie->manufacturer['name'];
+        }
+
         return [
             'err'    => $err,
             'series' => $series,

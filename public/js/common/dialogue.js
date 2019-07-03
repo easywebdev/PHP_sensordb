@@ -6,7 +6,7 @@ function createDialogue(dialogID, width, applayFunction)
         modal: true,
         autoOpen: false,
         resizable: false,
-        //position: ['center', 100],
+        position: ['center', 100],
         show: {
             effect: "blind",
             duration: 500
@@ -38,7 +38,7 @@ function createConfirmDialog(dialogID, width, applayFunction)
         modal: true,
         autoOpen: false,
         resizable: false,
-        //position: ['center', 100],
+        //position: [100, 100],
         show: {
             effect: "blind",
             duration: 500

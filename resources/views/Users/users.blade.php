@@ -11,21 +11,23 @@
             Users:
         </h2>
 
-        <div class="buttons-container">
+        <div class="line-block bg-color-blue">
             <a class="btn" href="javascript:addUserForm()">Add User</a>
         </div>
 
-        <table class="table">
-            <tr>
-                <td>#</td>
-                <td>Name</td>
-                <td>Role</td>
-                <td>Edit</td>
-                <td>Delete</td>
-            </tr>
-        </table>
+        <div class="line-block table-container">
+            <table class="table">
+                <tr>
+                    <td>#</td>
+                    <td>Name</td>
+                    <td>Role</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </table>
+        </div>
 
-        <div class="buttons-container">
+        <div class="line-block bg-color-blue">
             <a class="btn" href="javascript:addUserForm()">Add User</a>
         </div>
     </div>
