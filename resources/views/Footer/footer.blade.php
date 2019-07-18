@@ -1,3 +1,3 @@
 <div class="container">
-    &copy;MSL
+    <div class="line-block block-footer">&copy;MSL</div>
 </div>

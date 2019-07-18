@@ -31,7 +31,7 @@
             <div class="page-info"></div>
         </div>
 
-        <div class="line-block table-container">
+        <div id="edittable" class="line-block table-container">
             <table class="table" id="edit"></table>
         </div>
 

@@ -45,4 +45,13 @@ Route::get('date', function () {
     echo date("Y-m-d H:i:s", $my_date);
 });
 
+Route::get('dt', function () {
+    $strDate = '01.07.2019 03:23:45';
+    $dt = strtotime($strDate);
+    $date = date('Y-m-d H:i:s', $dt);
+    echo 'Date:<br />';
+    echo $strDate . '<br />';
+    echo $date;
+});
+
 

@@ -130,7 +130,12 @@ class SamplesController
             $samplesArr = $request->input('samples');
 
             for($i = 0; $i < count($samplesArr); $i++) {
+                // Recalculate unuts I and V acording to their default values in DB
                 $samplesArr[$i] = $this->recalculateUnits($samplesArr[$i], $request->input('iunits'), $request->input('vunits'));
+
+                // Transform DataTime into format which needet to MySQL (from 'dd.mm.YY hh:mm:ss to YY-mm-dd hh:mm:ss')
+                $dt = strtotime($samplesArr[$i]['date_time']);
+                $samplesArr[$i]['date_time'] = date('Y-m-d H:i:s', $dt);
             }
             Samples::insert($samplesArr);
             $answer = 'Samples was add';
@@ -182,7 +187,14 @@ class SamplesController
             for ($i = 0; $i < count($samplesArr); $i++) {
                 $samplesID[$i] = $samplesArr[$i]['id'];
                 unset($samplesArr[$i]['id']);
+
+                // Recalculate unuts I and V acording to their default values in DB
                 $samplesArr[$i] = $this->recalculateUnits($samplesArr[$i], $request->input('iunits'), $request->input('vunits'));
+
+                // Transform DataTime into format which needet to MySQL (from 'dd.mm.YY hh:mm:ss to YY-mm-dd hh:mm:ss')
+                $dt = strtotime($samplesArr[$i]['date_time']);
+                $samplesArr[$i]['date_time'] = date('Y-m-d H:i:s', $dt);
+
                 Samples::where('id', $samplesID[$i])->update($samplesArr[$i]);
             }
 

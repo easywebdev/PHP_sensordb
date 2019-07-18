@@ -107,9 +107,9 @@ function buildPage(pageLink) {
                     $('.filters').html(
                         '<div class="line-block__item">' +
                         '<div class="filters__item">' +
-                        '<div class="input-container"><label class="label" for="series">Select Serie:</label>' + filterSelectBuilder('series', seriesList, selectedSerie) + '</div>' +
-                        '<div class="input-container"><label class="label" for="materials">Select Material:</label>' + filterSelectBuilder('materials', materialsList, selectedMaterial) + '</div>' +
-                        '<div class="input-container"><label class="label" for="manufacturers">Select Manufacturer:</label>' + filterSelectBuilder('manufacturers', manufacturersList, selectedManufacturer) + '</div>' +
+                        '<div class="input-container input-container--middle"><label class="label" for="series">Select Serie:</label>' + filterSelectBuilder('series', seriesList, selectedSerie) + '</div>' +
+                        '<div class="input-container input-container--middle"><label class="label" for="materials">Select Material:</label>' + filterSelectBuilder('materials', materialsList, selectedMaterial) + '</div>' +
+                        '<div class="input-container input-container--middle"><label class="label" for="manufacturers">Select Manufacturer:</label>' + filterSelectBuilder('manufacturers', manufacturersList, selectedManufacturer) + '</div>' +
                         '</div>' +
                         '<div class="filters__item">' +
                         '<div class="input-container"><label class="label" for="datetimepicker">DateTime:</label><input type="text" id="datetimepicker" value="' + DateTime + '"/>' + '</div>' +
@@ -223,9 +223,9 @@ function buildPage(pageLink) {
                         '<td>Serie</td>' +
                         '<td>Material</td>' +
                         '<td>Manufacturer</td>' +
-                        '<td>I<div>[' + currentUnits + ']</div></td>'+
                         '<td><div>R</div><div>[&Omega;]</div></td>' +
                         '<td><div>R&#10065;</div><div>[&Omega;]</div></td>' +
+                        '<td>I<div>[' + currentUnits + ']</div></td>' +
                         '<td><div>V<sub>0</sub></div><div>[' + voltageUnits + ']</div></td>' +
                         '<td><div>V<sub>H</sub></div><div>[' + voltageUnits + ']</div></td>' +
                         '<td><div>S<sub>I</sub></div><div>[V/A/T]</div></td>' +
@@ -309,9 +309,9 @@ function buildSamplesTable(number, sampleData, seriesList, materialsList, manufa
         '<td>' + buildSeries(seriesList, sampleData.series_id) + '</td>' +
         '<td>' + sampleData.material_name + '</td>' +
         '<td>' + sampleData.manufacturer_name + '</td>' +
-        '<td' + editableTD + '>' + sampleData.current + '</td>' +
         '<td' + editableTD + '>' + sampleData.resistance + '</td>' +
         '<td' + editableTD + '>' + sampleData.sqr_resistance + '</td>' +
+        '<td' + editableTD + '>' + sampleData.current + '</td>' +
         '<td' + editableTD + '>' + sampleData.offset + '</td>' +
         '<td' + editableTD + '>' + sampleData.hall_voltage + '</td>' +
         '<td' + editableTD + '>' + sampleData.sensitive_i + '</td>' +
@@ -423,7 +423,9 @@ function buildSeries(seriesList, id)
             selected = 'selected';
             serie = pair[1];
         }
-        serieName += '<option value="' + pair[0] +'"' + selected + '>' + pair[1] + '</option>';
+        if(pair[1] != 'All') {
+            serieName += '<option value="' + pair[0] +'"' + selected + '>' + pair[1] + '</option>';
+        }
     }
 
     serieName += '</select>';
@@ -635,9 +637,9 @@ function parceTableDataToJson(tableID)
             dataObj = {
                 id: data[i][18],
                 name: data[i][2],
-                current: data[i][6],
-                resistance: data[i][7],
-                sqr_resistance: data[i][8],
+                current: data[i][8],
+                resistance: data[i][6],
+                sqr_resistance: data[i][7],
                 offset: data[i][9],
                 hall_voltage: data[i][10],
                 sensitive_i: data[i][11],
@@ -710,29 +712,36 @@ function addSamplesForm()
     $('#adddialog').dialog('open');
 
     $('#adddialog').html(
-        '<div class="line-block">' +
-        '<div id="addseriesselector">Select serie:' + serieStr + '</div>' +
-        '<a class="btn" href="javascript:addRow()">+</a>' +
-        '<div id="rownimber">0</div>' +
-        '<select id="iunits" class="">' +
-        '<option value="nA">nA</option>' +
-        '<option value="mkA">mkA</option>' +
-        '<option value="mA" selected>mA</option>' +
-        '<option value="A">A</option>' +
-        '</select>' +
-        '<select id="vunits" class="">' +
-        '<option value="nV">nV</option>' +
-        '<option value="mkV">mkV</option>' +
-        '<option value="mV" selected>mV</option>' +
-        '<option value="V">V</option></select>' +
+        '<div id="addsamples" class="line-block bg-color-blue line-block--centeritems">' +
+            '<div class="line-block__item" id="addseriesselector"><label class="data-form__label">Select serie:</label>' + serieStr + '</div>' +
+            '<div class="line-block__item">' +
+                '<a class="btn" href="javascript:addRow()">+</a>' +
+            '</div>' +
+            '<div class="line-block__item" id="rownimber">0</div>' +
+            '<div class="line-block__item">' +
+                '<select id="iunits" class="">' +
+                    '<option value="nA">nA</option>' +
+                    '<option value="mkA">mkA</option>' +
+                    '<option value="mA" selected>mA</option>' +
+                    '<option value="A">A</option>' +
+                '</select>' +
+            '</div>' +
+            '<div class="line-block__item">' +
+                '<select id="vunits" class="">' +
+                    '<option value="nV">nV</option>' +
+                    '<option value="mkV">mkV</option>' +
+                    '<option value="mV" selected>mV</option>' +
+                    '<option value="V">V</option>' +
+                '</select>' +
+            '</div>' +
         '</div>' +
         '<table id="addtable" class="table"><tr>' +
         '<td>#</td>' +
         '<td>Name</td>' +
         '<td>Serie</td>' +
-        '<td>I<div>[' + currentUnits + ']</div></td>'+
         '<td><div>R</div><div>[&Omega;]</div></td>' +
         '<td><div>R&#10065;</div><div>[&Omega;]</div></td>' +
+        '<td>I<div>[' + currentUnits + ']</div></td>' +
         '<td><div>V<sub>0</sub></div><div>[' + voltageUnits + ']</div></td>' +
         '<td><div>V<sub>H</sub></div><div>[' + voltageUnits + ']</div></td>' +
         '<td><div>S<sub>I</sub></div><div>[V/A/T]</div></td>' +
@@ -820,9 +829,9 @@ function addData()
                 data[m][j] = $(col).html();
                 dataObj = {
                     name: data[m][1],
-                    current: data[m][3],
-                    resistance: data[m][4],
-                    sqr_resistance: data[m][5],
+                    current: data[m][5],
+                    resistance: data[m][3],
+                    sqr_resistance: data[m][4],
                     offset: data[m][6],
                     hall_voltage: data[m][7],
                     sensitive_i: data[m][8],
@@ -845,8 +854,8 @@ function addData()
         type: 'POST',
         data: {
             "userToken": TOKEN,
-            "iunits": $('#iunits').val(),
-            "vunits": $('#vunits').val(),
+            "iunits": $('#adddialog #iunits').val(),
+            "vunits": $('#adddialog #vunits').val(),
             "samples": outArr
         },
         success: function(answer) {
@@ -863,3 +872,97 @@ function addData()
 
     console.log(outArr);
 }
+
+// Past in Table (#addtable)
+$('#adddialog').on('DOMNodeInserted', '#addtable tr td' , function(){
+    let insertData;
+    let rows = [];
+    let arrData = [];
+
+    let colIndex;
+    let rowIndex;
+
+    // parse data from cell
+    insertData = $(this).html();
+
+    if(insertData.indexOf('<tr') > -1) {
+        //console.log($(this).find('table tbody').html());
+        let k = 0;
+        $($(this).find('table tbody').html()).each(function (key, value) {
+            if($(value).html() != undefined) {
+                rows[k] = $(value).html();
+                k++;
+            }
+        });
+
+        for(let i = 0; i < rows.length; i++) {
+            arrData[i] = [];
+            let j = 0;
+            $(rows[i]).each(function (key, value) {
+                if($(value).html() != undefined) {
+                    arrData[i][j] = $(value).html();
+                    j++;
+                }
+            });
+        }
+
+        // cell index
+        colIndex = $(this).closest('td').index();
+        rowIndex = $(this).closest('tr').index();
+
+        // paste data
+        for (let i = 0; i < arrData.length; i++) {
+            for (let j = 0; j < arrData[0].length; j++) {
+                arrData[i][j].replace(',', '.');
+                $('#addtable tr:eq(' + (rowIndex + i) + ') td:eq(' + (colIndex + j) +')').html(arrData[i][j].replace(',', '.'));
+            }
+        }
+    }
+});
+
+// Past in Table (#edit)
+$('#edittable').on('DOMNodeInserted', '#edit tr td' , function(){
+    let insertData;
+    let rows = [];
+    let arrData = [];
+
+    let colIndex;
+    let rowIndex;
+
+    // parse data from cell
+    insertData = $(this).html();
+
+    if(insertData.indexOf('<tr') > -1) {
+        //console.log($(this).find('table tbody').html());
+        let k = 0;
+        $($(this).find('table tbody').html()).each(function (key, value) {
+            if($(value).html() != undefined) {
+                rows[k] = $(value).html();
+                k++;
+            }
+        });
+
+        for(let i = 0; i < rows.length; i++) {
+            arrData[i] = [];
+            let j = 0;
+            $(rows[i]).each(function (key, value) {
+                if($(value).html() != undefined) {
+                    arrData[i][j] = $(value).html();
+                    j++;
+                }
+            });
+        }
+
+        // cell index
+        colIndex = $(this).closest('td').index();
+        rowIndex = $(this).closest('tr').index();
+
+        // paste data
+        for (let i = 0; i < arrData.length; i++) {
+            for (let j = 0; j < arrData[0].length; j++) {
+                arrData[i][j].replace(',', '.');
+                $('#edit tr:eq(' + (rowIndex + i) + ') td:eq(' + (colIndex + j) +')').html(arrData[i][j].replace(',', '.'));
+            }
+        }
+    }
+});

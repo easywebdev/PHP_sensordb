@@ -120,4 +120,11 @@ $(function() {
         $('.user-menu').slideToggle();
     })
 });
+
+$(function() {
+    $('.hidden').on('click', function () {
+       $('.nav .nav__item:not(.hidden)').slideToggle();
+       $('.nav__item').css('display', 'flex');
+    })
+});
 /**/
