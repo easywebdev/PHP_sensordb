@@ -185,8 +185,22 @@ Route::middleware(['root'])->group(function () {
      *  {
      *      "err": null,
      *      "users": {
-     *          "3": {"id":3,"name":"admin","password":"5b27b6e52d0f2c64c66d5dbc9e8a836b","token":"e058b73aa4377d20b56157713cfd6b78","roles_id":2,"role":"admin"},
-     *          "4": {"id":4,"name":"admin1","password":"e10adc3949ba59abbe56e057f20f883e","token":"af4c236904b2069d556e33e73f2aa033","roles_id":2,"role":"admin"}
+     *          {
+     *              "id":3,
+     *              "name":"admin",
+     *              "password":"5b27b6e52d0f2c64c66d5dbc9e8a836b",
+     *              "token":"e058b73aa4377d20b56157713cfd6b78",
+     *              "roles_id":2,
+     *              "role":"admin"
+     *          },
+     *          {
+     *              "id":4,
+     *              "name":"admin1",
+     *              "password":"e10adc3949ba59abbe56e057f20f883e",
+     *              "token":"af4c236904b2069d556e33e73f2aa033",
+     *              "roles_id":2,
+     *              "role":"admin"
+     *          }
      *      }
      *
      * @apiError err Server errors array
@@ -258,21 +272,21 @@ Route::middleware(['root'])->group(function () {
      *  }
      *
      * @apiSuccess {String} err null.
-     * @apiSuccess {String} result Add user information.
+     * @apiSuccess {String} answer Add user information.
      * @apiSuccessExample Success-Response:
      *     {
      *       "err": null,
-     *       "result": "User add successfully"
+     *       "answer": "User add successfully"
      *     }
      *
      * @apiError err Server errors array
-     * @apiError result User was not Added
+     * @apiError answer User was not Added
      * @apiErrorExample {json} Error-Response:
      *  {
      *      "err": [
      *          "The name has already been taken."
      *      ],
-     *      "result": "user not added"
+     *      "answer": "user not added"
      *  }
      */
     Route::post('addusers', 'Users\UserController@addUser');
@@ -297,21 +311,21 @@ Route::middleware(['root'])->group(function () {
      *  }
      *
      * @apiSuccess {String} err null.
-     * @apiSuccess {JSON} result Edit user information.
+     * @apiSuccess {JSON} answer Edit user information.
      * @apiSuccessExample Success-Response:
      *     {
      *       "err": null,
-     *       "result": "user was changed"
+     *       "answer": "user was changed"
      *     }
      *
      * @apiError err Server errors array
-     * @apiError result User data not changed
+     * @apiError answer User data not changed
      * @apiErrorExample {json} Error-Response:
      *  {
      *      "err": [
      *          "The selected id is invalid."
      *      ],
-     *      "result": "user not changed"
+     *      "answer": "user not changed"
      *  }
      */
     Route::put('editusers/{id}', 'Users\UserController@editUser');
@@ -330,21 +344,21 @@ Route::middleware(['root'])->group(function () {
      *  }
      *
      * @apiSuccess {String} err null.
-     * @apiSuccess {String} result Delete user information.
+     * @apiSuccess {String} answer Delete user information.
      * @apiSuccessExample Success-Response:
      *  {
      *      "err": null,
-     *      "result": "user was deleted"
+     *      "answer": "user was deleted"
      *  }
      *
      * @apiError err Server errors array
-     * @apiError result User wos not deleted
+     * @apiError answer User wos not deleted
      * @apiErrorExample {json} Error-Response:
      *  {
      *      "err": [
      *          "user not found"
      *      ]
-     *      "result": "user was not deleted"
+     *      "answer": "user was not deleted"
      *  }
      */
     Route::delete('delusers/{id}', 'Users\UserController@delUser');
@@ -489,7 +503,7 @@ Route::middleware(['rootadmin'])->group(function () {
      * @apiSuccessExample Success-Response:
      *   {
      *      "err": null,
-     *      "manufacturer": "Manufacturer was add"
+     *      "answer": "Manufacturer was added"
      *   }
      *
      * @apiError err Server errors array.
@@ -676,6 +690,7 @@ Route::middleware(['rootadmin'])->group(function () {
      * @apiParam {Enum} iunits Voltage units for this serie. May be "A", "mA", "mkA", "nA".
      * @apiParam {Enum} vunits Voltage units for this serie. May be "V", "mV", "mkV", "nV"
      * @apiParam {Number} manufacturers_id Manufacturer id for this serie.
+     * @apiParam {Number} materials_id Material id for this serie.
      * @apiParamExample {json} Request-Example:
      *  {
      *      "userToken" : "af4c236904b2069d556e33e73f2aa033",
@@ -733,6 +748,7 @@ Route::middleware(['rootadmin'])->group(function () {
      * @apiParam {Enum} iunits Voltage units for this serie. May be "A", "mA", "mkA", "nA".
      * @apiParam {Enum} vunits Voltage units for this serie. May be "V", "mV", "mkV", "nV".
      * @apiParam {Number} manufacturers_id Manufacturer id for this serie.
+     * @apiParam {Number} materials_id Material id for this serie.
      * @apiParamExample {json} Request-Example:
      *  {
      *      "userToken" : "af4c236904b2069d556e33e73f2aa033",
@@ -748,6 +764,7 @@ Route::middleware(['rootadmin'])->group(function () {
      *      "iunits": "mA",
      *      "vunits": "mkV",
      *      "manufacturers_id": 1,
+     *      "materials_id": 1,
      *      "materials_id": 1
      *  }
      *
@@ -1350,9 +1367,10 @@ Route::middleware(['rootadmin'])->group(function () {
      *
      * @apiParam {String} userToken Current user token.
      * @apiParam {file} image Input type="file" .
+     * @apiParam {String} userToken Input type="hidden" .
      * @apiParamExample {json} Request-Example:
-     *  <input type="file">
-     *  <input type="hidden" value = "af4c236904b2069d556e33e73f2aa033">
+     *  <input type="file" name="image">
+     *  <input type="hidden" name="userToken" value = "af4c236904b2069d556e33e73f2aa033">
      *
      * @apiSuccess {String} err null.
      * @apiSuccess {String} image Relative file path.

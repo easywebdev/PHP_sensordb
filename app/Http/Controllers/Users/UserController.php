@@ -25,10 +25,12 @@ class UserController extends Controller
 
         $users = User::where('name', '!=', 'root')->get();
 
+        $i = 0;
         foreach ($users as $user) {
             $role = Role::find($user->roles_id);
-            $usersArr[$user->id] = $user->toArray();
-            $usersArr[$user->id]['role'] = $role->name;
+            $usersArr[$i] = $user->toArray();
+            $usersArr[$i]['role'] = $role->name;
+            $i++;
         }
 
         return [
@@ -100,7 +102,7 @@ class UserController extends Controller
 
         return [
             'err'    => $err,
-            'result' => $answer,
+            'answer' => $answer,
         ];
     }
 
@@ -141,7 +143,7 @@ class UserController extends Controller
 
         return [
             'err'    => $err,
-            'result' => $answer,
+            'answer' => $answer,
         ];
     }
 
@@ -166,7 +168,7 @@ class UserController extends Controller
 
         return [
             'err'    => $err,
-            'result' => $answer,
+            'answer' => $answer,
         ];
     }
 }

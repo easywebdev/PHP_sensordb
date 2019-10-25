@@ -73,11 +73,17 @@ class SeriesController extends Controller
         $postData['id'] = $request->route('id');
         $validateRules = [
             'name' => 'required|unique:series,name,' . $request->route('id'),
+            'thickness' => 'numeric',
+            'current' => 'numeric',
+            'resistance' => 'numeric',
+            'sensitivity' => 'numeric',
+            'offset' => 'numeric',
             'material_type' => 'in:3D,2D',
             'image' => 'required',
             'vunits' => 'in:V,mV,mkV,nV',
             'iunits' => 'in:A,mA,mkA,nA',
             'manufacturers_id' => 'exists:manufacturers,id',
+            'materials_id' => 'exists:materials,id',
             'id' => 'exists:series,id',
         ];
         $validator = $this->validateData($postData, $validateRules);
@@ -96,6 +102,7 @@ class SeriesController extends Controller
             $serie->iunits = $postData['iunits'];
             $serie->material_type = $postData['material_type'];
             $serie->manufacturers_id = $postData['manufacturers_id'];
+            $serie->materials_id = $postData['materials_id'];
             $serie->save();
 
             $answer = 'Serie was changed';
@@ -121,6 +128,11 @@ class SeriesController extends Controller
 
         $validateRules = [
             'name' => 'required|unique:series,name,',
+            'thickness' => 'numeric',
+            'current' => 'numeric',
+            'resistance' => 'numeric',
+            'sensitivity' => 'numeric',
+            'offset' => 'numeric',
             'material_type' => 'in:3D,2D',
             'image' => 'required',
             'vunits' => 'in:V,mV,mkV,nV',

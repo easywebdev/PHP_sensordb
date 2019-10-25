@@ -3,5 +3,5 @@
   "version": "1.0.0",
   "description": "Rest API backend server for sensor data base MSL.<br />All data must be send in JSON format.<br />All response from server is on JSON format",
   "title": "Sensor DB API",
-  "url" : ""
+  "url" : "sensordb.loc/api"
 }

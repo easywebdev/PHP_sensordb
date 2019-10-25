@@ -421,7 +421,7 @@
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "<input type=\"file\">\n<input type=\"hidden\" value = \"af4c236904b2069d556e33e73f2aa033\">",
+          "content": "<input type=\"file\" name=\"image\">\n<input type=\"hidden\" name=\"userToken\" value = \"af4c236904b2069d556e33e73f2aa033\">",
           "type": "json"
         }
       ]
@@ -654,7 +654,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n   \"err\": null,\n   \"manufacturer\": \"Manufacturer was add\"\n}",
+          "content": "{\n   \"err\": null,\n   \"answer\": \"Manufacturer was added\"\n}",
           "type": "json"
         }
       ]
@@ -2390,13 +2390,20 @@
             "optional": false,
             "field": "manufacturers_id",
             "description": "<p>Manufacturer id for this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "materials_id",
+            "description": "<p>Material id for this serie.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Request-Example:",
-          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"iunits\": \"mA\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1\n}",
+          "content": "{\n    \"userToken\" : \"af4c236904b2069d556e33e73f2aa033\",\n    \"name\": \"series-1\",\n    \"structure\": \"layer-1/substrate\",\n    \"thickness\": 1900,\n    \"image\": \"image-11\",\n    \"current\": 20,\n    \"resistance\": 150,\n    \"sensitivity\": 25,\n    \"offset\": 3,\n    \"material_type\": \"3D\",\n    \"iunits\": \"mA\",\n    \"vunits\": \"mkV\",\n    \"manufacturers_id\": 1,\n    \"materials_id\": 1,\n    \"materials_id\": 1\n}",
           "type": "json"
         }
       ]
@@ -2650,6 +2657,13 @@
             "optional": false,
             "field": "manufacturers_id",
             "description": "<p>Manufacturer id for this serie.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "materials_id",
+            "description": "<p>Material id for this serie.</p>"
           }
         ]
       },
@@ -2946,7 +2960,7 @@
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "result",
+            "field": "answer",
             "description": "<p>Add user information.</p>"
           }
         ]
@@ -2954,7 +2968,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"err\": null,\n  \"result\": \"User add successfully\"\n}",
+          "content": "{\n  \"err\": null,\n  \"answer\": \"User add successfully\"\n}",
           "type": "json"
         }
       ]
@@ -2971,7 +2985,7 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "result",
+            "field": "answer",
             "description": "<p>User was not Added</p>"
           }
         ]
@@ -2979,7 +2993,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "{\n    \"err\": [\n        \"The name has already been taken.\"\n    ],\n    \"result\": \"user not added\"\n}",
+          "content": "{\n    \"err\": [\n        \"The name has already been taken.\"\n    ],\n    \"answer\": \"user not added\"\n}",
           "type": "json"
         }
       ]
@@ -3040,7 +3054,7 @@
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "result",
+            "field": "answer",
             "description": "<p>Delete user information.</p>"
           }
         ]
@@ -3048,7 +3062,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"err\": null,\n    \"result\": \"user was deleted\"\n}",
+          "content": "{\n    \"err\": null,\n    \"answer\": \"user was deleted\"\n}",
           "type": "json"
         }
       ]
@@ -3065,7 +3079,7 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "result",
+            "field": "answer",
             "description": "<p>User wos not deleted</p>"
           }
         ]
@@ -3073,7 +3087,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "{\n    \"err\": [\n        \"user not found\"\n    ]\n    \"result\": \"user was not deleted\"\n}",
+          "content": "{\n    \"err\": [\n        \"user not found\"\n    ]\n    \"answer\": \"user was not deleted\"\n}",
           "type": "json"
         }
       ]
@@ -3155,7 +3169,7 @@
             "group": "Success 200",
             "type": "JSON",
             "optional": false,
-            "field": "result",
+            "field": "answer",
             "description": "<p>Edit user information.</p>"
           }
         ]
@@ -3163,7 +3177,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n  \"err\": null,\n  \"result\": \"user was changed\"\n}",
+          "content": "{\n  \"err\": null,\n  \"answer\": \"user was changed\"\n}",
           "type": "json"
         }
       ]
@@ -3180,7 +3194,7 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "result",
+            "field": "answer",
             "description": "<p>User data not changed</p>"
           }
         ]
@@ -3188,7 +3202,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "{\n    \"err\": [\n        \"The selected id is invalid.\"\n    ],\n    \"result\": \"user not changed\"\n}",
+          "content": "{\n    \"err\": [\n        \"The selected id is invalid.\"\n    ],\n    \"answer\": \"user not changed\"\n}",
           "type": "json"
         }
       ]
@@ -3344,7 +3358,7 @@
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n    \"err\": null,\n    \"users\": {\n        \"3\": {\"id\":3,\"name\":\"admin\",\"password\":\"5b27b6e52d0f2c64c66d5dbc9e8a836b\",\"token\":\"e058b73aa4377d20b56157713cfd6b78\",\"roles_id\":2,\"role\":\"admin\"},\n        \"4\": {\"id\":4,\"name\":\"admin1\",\"password\":\"e10adc3949ba59abbe56e057f20f883e\",\"token\":\"af4c236904b2069d556e33e73f2aa033\",\"roles_id\":2,\"role\":\"admin\"}\n    }",
+          "content": "{\n    \"err\": null,\n    \"users\": {\n        {\n            \"id\":3,\n            \"name\":\"admin\",\n            \"password\":\"5b27b6e52d0f2c64c66d5dbc9e8a836b\",\n            \"token\":\"e058b73aa4377d20b56157713cfd6b78\",\n            \"roles_id\":2,\n            \"role\":\"admin\"\n        },\n        {\n            \"id\":4,\n            \"name\":\"admin1\",\n            \"password\":\"e10adc3949ba59abbe56e057f20f883e\",\n            \"token\":\"af4c236904b2069d556e33e73f2aa033\",\n            \"roles_id\":2,\n            \"role\":\"admin\"\n        }\n    }",
           "type": "json"
         }
       ]
